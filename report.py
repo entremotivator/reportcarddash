@@ -93,9 +93,11 @@ def main():
     st.sidebar.title("TruLens Dashboard Options")
     option_show_summary = st.sidebar.checkbox("Show Summary Statistics", value=True)
     
-st.title("TruLens Dashboard")
+    # ... Add other sidebar options
+    
+    st.title("TruLens Dashboard")
 
-
+    show_dataframe(tru_lens_dashboard)
     
     if option_show_summary:
         show_summary_statistics(tru_lens_dashboard)
@@ -106,10 +108,10 @@ st.title("TruLens Dashboard")
     show_llms_scores_vs_feature1(tru_lens_dashboard)
     show_feature3_distribution(tru_lens_dashboard)
     show_cost_by_feature(tru_lens_dashboard)
+    show_feature11_distribution(tru_lens_dashboard)
     show_feature12_vs_feature13_scatter(tru_lens_dashboard)
     show_feature14_distribution(tru_lens_dashboard)
     # ... Add more chart functions
 
 if __name__ == "__main__":
     main()
-
