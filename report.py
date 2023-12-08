@@ -67,12 +67,6 @@ st.text("Details: This chart displays the average LLMS Score for each Agent.")
 
 # Options for TruLens Metrics
 
-# Option 4: Relevance
-st.header("Option 4: Relevance Distribution")
-relevance_chart_data = tru_lens_dashboard['Relevance']
-st.hist_chart(relevance_chart_data)
-st.text("Details: This histogram shows the distribution of Relevance scores.")
-
 # Option 5: Groundedness
 st.header("Option 5: Groundedness Distribution")
 groundedness_chart_data = tru_lens_dashboard['Groundedness']
