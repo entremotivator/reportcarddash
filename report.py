@@ -96,7 +96,7 @@ def main():
     # ... Add other sidebar options
     
    # Update the title with an emoji
-st.title("🚀 GPT Report Card 📊")
+st.title("GPT Report Card Dashboard")
 
 # Add a description with emojis and features
 st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
