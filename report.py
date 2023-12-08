@@ -87,7 +87,126 @@ def show_feature14_distribution(data):
     hist_chart_data = data['Feature14']
     st.hist_chart(hist_chart_data)
 
-# ... Add more chart functions similarly
+# ... Add more chart functions for each feature over time
+
+def show_relevance_over_time(data):
+    st.header("Relevance over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Relevance',
+        tooltip=['Time', 'Relevance']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_groundedness_over_time(data):
+    st.header("Groundedness over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Groundedness',
+        tooltip=['Time', 'Groundedness']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_sentiment_over_time(data):
+    st.header("Sentiment over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Sentiment',
+        tooltip=['Time', 'Sentiment']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_model_agreement_over_time(data):
+    st.header("Model Agreement over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Model Agreement',
+        tooltip=['Time', 'Model Agreement']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_language_match_over_time(data):
+    st.header("Language Match over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Language Match',
+        tooltip=['Time', 'Language Match']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_toxicity_over_time(data):
+    st.header("Toxicity over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Toxicity',
+        tooltip=['Time', 'Toxicity']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_moderation_over_time(data):
+    st.header("Moderation over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Moderation',
+        tooltip=['Time', 'Moderation']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_stereotypes_over_time(data):
+    st.header("Stereotypes over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Stereotypes',
+        tooltip=['Time', 'Stereotypes']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+def show_summarization_over_time(data):
+    st.header("Summarization over Time")
+    time_data = np.arange(len(data))
+    chart = alt.Chart(data).mark_line().encode(
+        x='Time',
+        y='Summarization',
+        tooltip=['Time', 'Summarization']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(chart)
+
+# ... Add more chart functions for each feature over time
 
 def main():
     st.sidebar.title("GPT Report Dashboard")
@@ -152,6 +271,18 @@ def main():
     show_cost_by_feature(tru_lens_dashboard)
     show_feature12_vs_feature13_scatter(tru_lens_dashboard)
     show_feature14_distribution(tru_lens_dashboard)
+
+    # New charts for each feature over time
+    show_relevance_over_time(tru_lens_dashboard)
+    show_groundedness_over_time(tru_lens_dashboard)
+    show_sentiment_over_time(tru_lens_dashboard)
+    show_model_agreement_over_time(tru_lens_dashboard)
+    show_language_match_over_time(tru_lens_dashboard)
+    show_toxicity_over_time(tru_lens_dashboard)
+    show_moderation_over_time(tru_lens_dashboard)
+    show_stereotypes_over_time(tru_lens_dashboard)
+    show_summarization_over_time(tru_lens_dashboard)
+
     # ... Add more chart functions
 
 if __name__ == "__main__":
