@@ -1,6 +1,10 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import altair as alt
+import matplotlib.pyplot as plt
+import plotly.express as px
+from vega_datasets import data
 
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
@@ -10,16 +14,6 @@ def run_dashboard():
         'Agent': np.random.choice([f'Agent {i}' for i in range(1, num_agents + 1)], 100),
         'LLMS Score': np.random.randint(0, 100, 100),
         'Cost': np.random.randint(1000, 5000, 100),
-        'Relevance': np.random.uniform(0, 1, 100),
-        'Groundedness': np.random.uniform(0, 1, 100),
-        'Sentiment': np.random.uniform(-1, 1, 100),
-        'Model Agreement': np.random.uniform(0, 1, 100),
-        'Language Match': np.random.uniform(0, 1, 100),
-        'Toxicity': np.random.uniform(0, 1, 100),
-        'Moderation': np.random.uniform(0, 1, 100),
-        'Stereotypes': np.random.uniform(0, 1, 100),
-        'Summarization': np.random.uniform(0, 1, 100),
-        'Embeddings Distance': np.random.uniform(0, 1, 100),
         'Feature1': np.random.normal(0, 1, 100),
         'Feature2': np.random.uniform(0, 1, 100),
         'Feature3': np.random.choice(['A', 'B', 'C'], 100),
@@ -63,133 +57,56 @@ if option_show_summary:
 st.header("Option 3: LLMS Scores by Agent")
 bar_chart_data = tru_lens_dashboard.groupby('Agent')['LLMS Score'].mean()
 st.bar_chart(bar_chart_data)
-st.text("Details: This chart displays the average LLMS Score for each Agent.")
 
-# Options for TruLens Metrics
+# Option 4: Show an area chart for Feature2
+st.header("Option 4: Feature2 Distribution")
+area_chart_data = tru_lens_dashboard.groupby('Agent')['Feature2'].sum()
+st.area_chart(area_chart_data)
 
-# Option 5: Groundedness
-st.header("Option 5: Groundedness Distribution")
-groundedness_chart_data = tru_lens_dashboard['Groundedness']
-st.hist_chart(groundedness_chart_data)
-st.text("Details: This histogram shows the distribution of Groundedness scores.")
-
-# Option 6: Sentiment
-st.header("Option 6: Sentiment Distribution")
-sentiment_chart_data = tru_lens_dashboard['Sentiment']
-st.hist_chart(sentiment_chart_data)
-st.text("Details: This histogram shows the distribution of Sentiment scores.")
-
-# Option 7: Model Agreement
-st.header("Option 7: Model Agreement Distribution")
-model_agreement_chart_data = tru_lens_dashboard['Model Agreement']
-st.hist_chart(model_agreement_chart_data)
-st.text("Details: This histogram shows the distribution of Model Agreement scores.")
-
-# Option 8: Language Match
-st.header("Option 8: Language Match Distribution")
-language_match_chart_data = tru_lens_dashboard['Language Match']
-st.hist_chart(language_match_chart_data)
-st.text("Details: This histogram shows the distribution of Language Match scores.")
-
-# Option 9: Toxicity
-st.header("Option 9: Toxicity Distribution")
-toxicity_chart_data = tru_lens_dashboard['Toxicity']
-st.hist_chart(toxicity_chart_data)
-st.text("Details: This histogram shows the distribution of Toxicity scores.")
-
-# Option 10: Moderation
-st.header("Option 10: Moderation Distribution")
-moderation_chart_data = tru_lens_dashboard['Moderation']
-st.hist_chart(moderation_chart_data)
-st.text("Details: This histogram shows the distribution of Moderation scores.")
-
-# Option 11: Stereotypes
-st.header("Option 11: Stereotypes Distribution")
-stereotypes_chart_data = tru_lens_dashboard['Stereotypes']
-st.hist_chart(stereotypes_chart_data)
-st.text("Details: This histogram shows the distribution of Stereotypes scores.")
-
-# Option 12: Summarization
-st.header("Option 12: Summarization Distribution")
-summarization_chart_data = tru_lens_dashboard['Summarization']
-st.hist_chart(summarization_chart_data)
-st.text("Details: This histogram shows the distribution of Summarization scores.")
-
-# Option 13: Embeddings Distance
-st.header("Option 13: Embeddings Distance Distribution")
-embeddings_distance_chart_data = tru_lens_dashboard['Embeddings Distance']
-st.hist_chart(embeddings_distance_chart_data)
-st.text("Details: This histogram shows the distribution of Embeddings Distance scores.")
-
-# Option 4: Show a line chart for LLMS Scores over time (assumed time data)
-st.header("Option 4: LLMS Scores over Time")
+# Option 5: Show a line chart for LLMS Scores over time (assumed time data)
+st.header("Option 5: LLMS Scores over Time")
 time_data = np.arange(len(tru_lens_dashboard))
 st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard['LLMS Score']}))
-st.text("Details: This line chart shows how LLMS Scores change over time.")
 
 # Option 6: Show a scatter plot for LLMS Scores vs. another metric (Feature1)
 st.header("Option 6: LLMS Scores vs. Feature1")
 st.scatter_chart(pd.DataFrame({'LLMS Score': tru_lens_dashboard['LLMS Score'], 'Feature1': tru_lens_dashboard['Feature1']}))
-st.text("Details: This scatter plot compares LLMS Scores with Feature1 for each data point.")
 
-# Option 8: Show a number input for custom LLMS Score threshold
-st.header("Option 8: Custom LLMS Score Threshold")
-custom_threshold = st.number_input("Enter LLMS Score Threshold", min_value=0, max_value=100, value=50)
-st.text(f"Details: Displaying data where LLMS Score is greater than {custom_threshold}.")
+# Option 7: Show an Altair chart for Feature3
+st.header("Option 7: Feature3 Distribution")
+chart = alt.Chart(tru_lens_dashboard).mark_bar().encode(x='Feature3', y='count()')
+st.altair_chart(chart, use_container_width=True)
 
-# Option 9: Show a text input for filtering by Agent
-st.header("Option 9: Filter by Agent")
-filter_agent = st.text_input("Enter Agent Name")
-st.text(f"Details: Displaying data for the specified Agent: {filter_agent}")
+# Option 8: Show a Plotly chart for Feature4
+st.header("Option 8: Feature4 Distribution")
+fig = px.bar(tru_lens_dashboard, x='Feature4', title="Feature4 Distribution")
+st.plotly_chart(fig)
 
-# Option 10: Show a date input for filtering by date (assumed date data)
-st.header("Option 10: Filter by Date")
-filter_date = st.date_input("Select a Date")
-st.text(f"Details: Displaying data for the specified Date: {filter_date}")
+# Option 9: Show a Bokeh chart for Feature5 over time
+st.header("Option 9: Feature5 over Time (Bokeh)")
+bokeh_chart_data = pd.DataFrame({'Time': time_data, 'Feature5': tru_lens_dashboard['Feature5']})
+st.bokeh_chart(bokeh_chart_data)
 
-# Option 11: Show a cost chart for each agent
-st.header("Option 11: Cost by Agent")
-cost_chart_data = tru_lens_dashboard.groupby('Agent')['Cost'].sum()
-st.bar_chart(cost_chart_data)
-st.text("Details: This chart displays the total Cost for each Agent.")
+# Option 10: Show a PyDeck chart for Feature6 and Feature7
+st.header("Option 10: Feature6 vs. Feature7 (PyDeck)")
+pydeck_chart_data = pd.DataFrame({'Feature6': tru_lens_dashboard['Feature6'], 'Feature7': tru_lens_dashboard['Feature7']})
+st.pydeck_chart(pydeck_chart_data)
 
-# Option 12: Show a bar chart for Feature3
-st.header("Option 12: Feature3 Distribution")
-feature3_chart_data = tru_lens_dashboard['Feature3'].value_counts()
-st.bar_chart(feature3_chart_data)
-st.text("Details: This chart shows the distribution of Feature3.")
+# Option 11: Show a Vega-Lite chart for Feature8
+st.header("Option 11: Feature8 Distribution")
+vega_lite_chart_data = pd.DataFrame({'Feature8': tru_lens_dashboard['Feature8']})
+st.vega_lite_chart(vega_lite_chart_data)
 
-# Option 13: Show a bar chart for Feature4
-st.header("Option 13: Feature4 Distribution")
-feature4_chart_data = tru_lens_dashboard['Feature4'].value_counts()
-st.bar_chart(feature4_chart_data)
-st.text("Details: This chart shows the distribution of Feature4.")
+# Option 12: Show a Graphviz chart (Example: Pie chart for Feature9)
+st.header("Option 12: Feature9 Distribution (Graphviz)")
+graphviz_chart_data = tru_lens_dashboard['Feature9'].value_counts()
+st.graphviz_chart(graphviz_chart_data)
 
-# Option 14: Show a line chart for Feature5
-st.header("Option 14: Feature5 over Time")
-st.line_chart(pd.DataFrame({'Time': time_data, 'Feature5': tru_lens_dashboard['Feature5']}))
-st.text("Details: This line chart shows how Feature5 changes over time.")
-
-# Option 15: Show a scatter plot for Feature6 vs. Feature7
-st.header("Option 15: Feature6 vs. Feature7")
-st.scatter_chart(pd.DataFrame({'Feature6': tru_lens_dashboard['Feature6'], 'Feature7': tru_lens_dashboard['Feature7']}))
-st.text("Details: This scatter plot compares Feature6 with Feature7 for each data point.")
-
-# Option 17: Show a number input for custom Feature9 threshold
-st.header("Option 17: Custom Feature9 Threshold")
-custom_feature9_threshold = st.number_input("Enter Feature9 Threshold", min_value=0, max_value=10, value=5)
-st.text(f"Details: Displaying data where Feature9 is greater than {custom_feature9_threshold}.")
-
-# Option 18: Show a text input for filtering by Feature11
-st.header("Option 18: Filter by Feature11")
-filter_feature11 = st.text_input("Enter Feature11 Value")
-st.text(f"Details: Displaying data for the specified Feature11 Value: {filter_feature11}")
-
-# Option 20: Show a bar chart for Feature14
-st.header("Option 20: Feature14 Distribution")
-feature14_chart_data = tru_lens_dashboard['Feature14'].value_counts()
-st.bar_chart(feature14_chart_data)
-st.text("Details: This chart shows the distribution of Feature14.")
+# Option 13: Show a Map (Example: Using Plotly)
+st.header("Option 13: Map Visualization")
+map_data = data.airports()
+fig_map = px.scatter_geo(map_data, lat='latitude', lon='longitude', text='name')
+st.plotly_chart(fig_map)
 
 # You can customize and add more options based on your specific needs
 
