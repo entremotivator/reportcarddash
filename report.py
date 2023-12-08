@@ -95,15 +95,21 @@ def main():
     
     # ... Add other sidebar options
     
-   st.title("🚀 GPT Report Card 📊")
+   # Update the title with an emoji
+st.title("🚀 GPT Report Card 📊")
 
 # Add a description with emojis and features
-st.markdown("### GPT ReportCard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
+st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
             "✨ **Key Features:**\n"
             "1. Real-time performance metrics 📈\n"
             "2. Personalized improvement suggestions 🌟\n"
             "3. Historical analysis for continuous learning 🔄\n"
             "4. User-friendly interface for easy navigation 🖥️")
+
+# Placeholder for additional content or code for your TruLens Dashboard
+# ...
+
+# Example: Display a sample metric
 sample_metric = 85.5
 st.info(f"Current Accuracy: {sample_metric}%")
 
