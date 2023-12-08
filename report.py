@@ -61,7 +61,10 @@ st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard[
 
 # Option 5: Show a pie chart for the distribution of LLMS Scores
 st.header("Option 5: Distribution of LLMS Scores")
-st.pie_chart(tru_lens_dashboard['LLMS Score'].value_counts())
+llms_counts = tru_lens_dashboard['LLMS Score'].value_counts().reset_index()
+llms_counts.columns = ['LLMS Score', 'Count']
+st.pie_chart(llms_counts)
+
 
 # Option 6: Show a scatter plot for LLMS Scores vs. another metric (Feature1)
 st.header("Option 6: LLMS Scores vs. Feature1")
