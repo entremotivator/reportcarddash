@@ -95,7 +95,7 @@ def main():
     
 st.title("TruLens Dashboard")
 
-    show_dataframe(tru_lens_dashboard)
+
     
     if option_show_summary:
         show_summary_statistics(tru_lens_dashboard)
