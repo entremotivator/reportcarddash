@@ -3,3 +3,4 @@ pandas==1.3.3
 numpy==1.23.5
 trulens_eval
 plotly
+altair
