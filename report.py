@@ -82,10 +82,6 @@ st.header("Option 10: Feature6 vs. Feature7 (PyDeck)")
 pydeck_chart_data = pd.DataFrame({'Feature6': tru_lens_dashboard['Feature6'], 'Feature7': tru_lens_dashboard['Feature7']})
 st.pydeck_chart(pydeck_chart_data)
 
-# Option 11: Show a Vega-Lite chart for Feature8
-st.header("Option 11: Feature8 Distribution")
-vega_lite_chart_data = pd.DataFrame({'Feature8': tru_lens_dashboard['Feature8']})
-st.vega_lite_chart(vega_lite_chart_data)
 
 # Option 12: Show a Graphviz chart (Example: Pie chart for Feature9)
 st.header("Option 12: Feature9 Distribution (Graphviz)")
