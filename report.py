@@ -65,6 +65,68 @@ bar_chart_data = tru_lens_dashboard.groupby('Agent')['LLMS Score'].mean()
 st.bar_chart(bar_chart_data)
 st.text("Details: This chart displays the average LLMS Score for each Agent.")
 
+# Options for TruLens Metrics
+
+# Option 4: Relevance
+st.header("Option 4: Relevance Distribution")
+relevance_chart_data = tru_lens_dashboard['Relevance']
+st.hist_chart(relevance_chart_data)
+st.text("Details: This histogram shows the distribution of Relevance scores.")
+
+# Option 5: Groundedness
+st.header("Option 5: Groundedness Distribution")
+groundedness_chart_data = tru_lens_dashboard['Groundedness']
+st.hist_chart(groundedness_chart_data)
+st.text("Details: This histogram shows the distribution of Groundedness scores.")
+
+# Option 6: Sentiment
+st.header("Option 6: Sentiment Distribution")
+sentiment_chart_data = tru_lens_dashboard['Sentiment']
+st.hist_chart(sentiment_chart_data)
+st.text("Details: This histogram shows the distribution of Sentiment scores.")
+
+# Option 7: Model Agreement
+st.header("Option 7: Model Agreement Distribution")
+model_agreement_chart_data = tru_lens_dashboard['Model Agreement']
+st.hist_chart(model_agreement_chart_data)
+st.text("Details: This histogram shows the distribution of Model Agreement scores.")
+
+# Option 8: Language Match
+st.header("Option 8: Language Match Distribution")
+language_match_chart_data = tru_lens_dashboard['Language Match']
+st.hist_chart(language_match_chart_data)
+st.text("Details: This histogram shows the distribution of Language Match scores.")
+
+# Option 9: Toxicity
+st.header("Option 9: Toxicity Distribution")
+toxicity_chart_data = tru_lens_dashboard['Toxicity']
+st.hist_chart(toxicity_chart_data)
+st.text("Details: This histogram shows the distribution of Toxicity scores.")
+
+# Option 10: Moderation
+st.header("Option 10: Moderation Distribution")
+moderation_chart_data = tru_lens_dashboard['Moderation']
+st.hist_chart(moderation_chart_data)
+st.text("Details: This histogram shows the distribution of Moderation scores.")
+
+# Option 11: Stereotypes
+st.header("Option 11: Stereotypes Distribution")
+stereotypes_chart_data = tru_lens_dashboard['Stereotypes']
+st.hist_chart(stereotypes_chart_data)
+st.text("Details: This histogram shows the distribution of Stereotypes scores.")
+
+# Option 12: Summarization
+st.header("Option 12: Summarization Distribution")
+summarization_chart_data = tru_lens_dashboard['Summarization']
+st.hist_chart(summarization_chart_data)
+st.text("Details: This histogram shows the distribution of Summarization scores.")
+
+# Option 13: Embeddings Distance
+st.header("Option 13: Embeddings Distance Distribution")
+embeddings_distance_chart_data = tru_lens_dashboard['Embeddings Distance']
+st.hist_chart(embeddings_distance_chart_data)
+st.text("Details: This histogram shows the distribution of Embeddings Distance scores.")
+
 # Option 4: Show a line chart for LLMS Scores over time (assumed time data)
 st.header("Option 4: LLMS Scores over Time")
 time_data = np.arange(len(tru_lens_dashboard))
