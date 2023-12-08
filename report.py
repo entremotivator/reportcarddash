@@ -1,9 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-from trulens_eval.feedback.provider.openai import OpenAI as fOpenAI
-from trulens import Rag  # Assuming 'Rag' is the correct class, adjust as needed
-from trulens_eval import Feedback, LiteLLM, Tru, TruChain, Huggingface
+
 
 def run_gpt_report_card():
     # Assume `gpt.run_report_card()` returns the content of your GPT Report Card
