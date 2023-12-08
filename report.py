@@ -102,11 +102,6 @@ st.header("Option 12: Feature9 Distribution (Graphviz)")
 graphviz_chart_data = tru_lens_dashboard['Feature9'].value_counts()
 st.graphviz_chart(graphviz_chart_data)
 
-# Option 13: Show a Map (Example: Using Plotly)
-st.header("Option 13: Map Visualization")
-map_data = data.airports()
-fig_map = px.scatter_geo(map_data, lat='latitude', lon='longitude', text='name')
-st.plotly_chart(fig_map)
 
 # You can customize and add more options based on your specific needs
 
