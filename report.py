@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
     # Generate data with 10 agents, LLMS Score, Cost, Feature1 to Feature14
@@ -36,29 +35,40 @@ st.sidebar.title("TruLens Dashboard Options")
 
 # Options in the sidebar
 option_show_summary = st.sidebar.checkbox("Show Summary Statistics", value=True)
-selected_agent = st.sidebar.selectbox("Select Agent", tru_lens_dashboard['Agent'].unique())
+
+# Multi-select for Agents
+selected_agents = st.sidebar.multiselect("Select Agents", tru_lens_dashboard['Agent'].unique())
+
+# Multi-select for LLMS Options
+selected_llms_options = st.sidebar.multiselect("Select LLMS Options", tru_lens_dashboard['LLMS Score'].unique())
 
 # Display the dashboard content
 st.title("TruLens Dashboard")
 
+# Filter data based on selected options
+filtered_data = tru_lens_dashboard[
+    (tru_lens_dashboard['Agent'].isin(selected_agents)) &
+    (tru_lens_dashboard['LLMS Score'].isin(selected_llms_options))
+]
+
 # Option 1: Show the DataFrame
 st.header("Option 1: Display TruLens DataFrame")
-st.dataframe(tru_lens_dashboard)
+st.dataframe(filtered_data)
 
 # Option 2: Show summary statistics
 if option_show_summary:
     st.header("Option 2: Summary Statistics")
-    st.write(tru_lens_dashboard.describe())
+    st.write(filtered_data.describe())
 
 # Option 3: Show a bar chart for LLMS Scores by Agent
 st.header("Option 3: LLMS Scores by Agent")
-bar_chart_data = tru_lens_dashboard.groupby('Agent')['LLMS Score'].mean()
+bar_chart_data = filtered_data.groupby('Agent')['LLMS Score'].mean()
 st.bar_chart(bar_chart_data)
 
 # Option 4: Show a line chart for LLMS Scores over time (assumed time data)
 st.header("Option 4: LLMS Scores over Time")
-time_data = np.arange(len(tru_lens_dashboard))
-st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard['LLMS Score']}))
+time_data = np.arange(len(filtered_data))
+st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': filtered_data['LLMS Score']}))
 
 
 
