@@ -76,10 +76,6 @@ st.header("Option 7: Feature3 Distribution")
 chart = alt.Chart(tru_lens_dashboard).mark_bar().encode(x='Feature3', y='count()')
 st.altair_chart(chart, use_container_width=True)
 
-# Option 8: Show a Plotly chart for Feature4
-st.header("Option 8: Feature4 Distribution")
-fig = px.bar(tru_lens_dashboard, x='Feature4', title="Feature4 Distribution")
-st.plotly_chart(fig)
 
 # Option 9: Show a Bokeh chart for Feature5 over time
 st.header("Option 9: Feature5 over Time (Bokeh)")
