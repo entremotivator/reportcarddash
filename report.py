@@ -11,6 +11,16 @@ def generate_data(num_agents=NUM_AGENTS, num_rows=NUM_ROWS):
         'Agent': np.random.choice([f'Agent {i}' for i in range(1, num_agents + 1)], num_rows),
         'LLMS Score': np.random.randint(0, 100, num_rows),
         'Cost': np.random.randint(1000, 5000, num_rows),
+        'Relevance': np.random.randint(1, 100, num_rows),
+        'Groundedness': np.random.randint(1, 100, num_rows),
+        'Sentiment': np.random.randint(1, 100, num_rows),
+        'Model Agreement': np.random.randint(1, 100, num_rows),
+        'Language Match': np.random.randint(1, 100, num_rows),
+        'Toxicity': np.random.randint(1, 100, num_rows),
+        'Moderation': np.random.randint(1, 100, num_rows),
+        'Stereotypes': np.random.randint(1, 100, num_rows),
+        'Summarization': np.random.randint(1, 100, num_rows),
+        'Embeddings Distance': np.random.randint(1, 100, num_rows),
         'Feature1': np.random.normal(0, 1, num_rows),
         'Feature2': np.random.uniform(0, 1, num_rows),
         'Feature3': np.random.choice(['A', 'B', 'C'], num_rows),
@@ -121,3 +131,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
