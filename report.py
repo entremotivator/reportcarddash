@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import plotly
+
 
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
