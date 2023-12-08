@@ -93,7 +93,7 @@ def main():
     st.sidebar.title("TruLens Dashboard Options")
     option_show_summary = st.sidebar.checkbox("Show Summary Statistics", value=True)
     
-     st.title("TruLens Dashboard")
+st.title("TruLens Dashboard")
 
 # Add a description with emojis and features
 st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
