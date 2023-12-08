@@ -82,10 +82,6 @@ def show_feature12_vs_feature13_scatter(data):
     st.header("Option 12: Feature12 vs. Feature13 Scatter Plot")
     st.scatter_chart(pd.DataFrame({'Feature12': data['Feature12'], 'Feature13': data['Feature13']}))
 
-def show_feature14_distribution(data):
-    st.header("Option 13: Feature14 Distribution")
-    hist_chart_data = data['Feature14']
-    st.hist_chart(hist_chart_data)
 
 # ... Add more chart functions for each feature over time
 
