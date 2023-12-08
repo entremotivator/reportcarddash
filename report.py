@@ -75,15 +75,6 @@ def show_cost_by_feature(data):
     scatter_chart_data = pd.DataFrame({'Cost': data['Cost'], 'Feature4': data['Feature4']})
     st.scatter_chart(scatter_chart_data)
 
-def show_feature8_distribution(data):
-    st.header("Option 9: Feature8 Distribution")
-    hist_chart_data = data['Feature8']
-    st.hist_chart(hist_chart_data)
-
-def show_feature9_poisson_distribution(data):
-    st.header("Option 10: Feature9 Poisson Distribution")
-    hist_chart_data = data['Feature9']
-    st.hist_chart(hist_chart_data)
 
 def show_feature11_distribution(data):
     st.header("Option 11: Feature11 Distribution")
