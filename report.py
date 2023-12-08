@@ -76,11 +76,6 @@ def show_cost_by_feature(data):
     st.scatter_chart(scatter_chart_data)
 
 
-def show_feature11_distribution(data):
-    st.header("Option 11: Feature11 Distribution")
-    chart = alt.Chart(data).mark_bar().encode(x='Feature11', y='count()')
-    st.altair_chart(chart, use_container_width=True)
-
 def show_feature12_vs_feature13_scatter(data):
     st.header("Option 12: Feature12 vs. Feature13 Scatter Plot")
     st.scatter_chart(pd.DataFrame({'Feature12': data['Feature12'], 'Feature13': data['Feature13']}))
