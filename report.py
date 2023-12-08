@@ -110,10 +110,6 @@ custom_feature9_threshold = st.number_input("Enter Feature9 Threshold", min_valu
 st.header("Option 18: Filter by Feature11")
 filter_feature11 = st.text_input("Enter Feature11 Value")
 
-# Option 19: Show a pie chart for the distribution of Feature12
-st.header("Option 19: Distribution of Feature12")
-st.pie_chart(tru_lens_dashboard['Feature12'].value_counts())
-
 # Option 20: Show a bar chart for Feature13
 st.header("Option 20: Feature13 Distribution")
 feature13_chart_data = tru_lens_dashboard['Feature13'].value_counts()
