@@ -4,10 +4,10 @@ import numpy as np
 
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
-    # You can replace this with the actual TruLens dashboard content
-    # For demonstration purposes, we'll create a simple DataFrame
+    # Generate data with 10 agents
+    num_agents = 10
     data = {
-        'Agent': np.random.choice(['Agent 1', 'Agent 2', 'Agent 3'], 100),
+        'Agent': np.random.choice([f'Agent {i}' for i in range(1, num_agents + 1)], 100),
         'LLMS Score': np.random.randint(0, 100, 100),
     }
     tru_lens_df = pd.DataFrame(data)
