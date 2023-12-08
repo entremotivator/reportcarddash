@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 import altair as alt
 import matplotlib.pyplot as plt
-from vega_datasets import data
+
 
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
