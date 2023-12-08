@@ -60,13 +60,6 @@ st.header("Option 4: LLMS Scores over Time")
 time_data = np.arange(len(tru_lens_dashboard))
 st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard['LLMS Score']}))
 
-# Option 5: Show a pie chart for the distribution of LLMS Scores
-st.header("Option 5: Distribution of LLMS Scores")
-
-import plotly.express as px
-
-fig = px.pie(llms_counts, names='index', values='LLMS Score', title='Distribution of LLMS Scores')
-st.plotly_chart(fig)
 
 
 # Option 6: Show a scatter plot for LLMS Scores vs. another metric (Feature1)
