@@ -102,10 +102,6 @@ st.line_chart(pd.DataFrame({'Time': time_data, 'Feature5': tru_lens_dashboard['F
 st.header("Option 15: Feature6 vs. Feature7")
 st.scatter_chart(pd.DataFrame({'Feature6': tru_lens_dashboard['Feature6'], 'Feature7': tru_lens_dashboard['Feature7']}))
 
-# Option 16: Show a histogram for Feature8
-st.header("Option 16: Histogram of Feature8")
-st.hist_chart(tru_lens_dashboard['Feature8'])
-
 # Option 17: Show a number input for custom Feature9 threshold
 st.header("Option 17: Custom Feature9 Threshold")
 custom_feature9_threshold = st.number_input("Enter Feature9 Threshold", min_value=0, max_value=10, value=5)
