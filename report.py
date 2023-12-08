@@ -108,7 +108,6 @@ def main():
     show_llms_scores_vs_feature1(tru_lens_dashboard)
     show_feature3_distribution(tru_lens_dashboard)
     show_cost_by_feature(tru_lens_dashboard)
-    show_feature11_distribution(tru_lens_dashboard)
     show_feature12_vs_feature13_scatter(tru_lens_dashboard)
     show_feature14_distribution(tru_lens_dashboard)
     # ... Add more chart functions
