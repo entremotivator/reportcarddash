@@ -104,6 +104,8 @@ st.markdown("### GPT ReportCard\n\n🔍 Track Language Models (LLM) and agents w
             "2. Personalized improvement suggestions 🌟\n"
             "3. Historical analysis for continuous learning 🔄\n"
             "4. User-friendly interface for easy navigation 🖥️")
+sample_metric = 85.5
+st.info(f"Current Accuracy: {sample_metric}%")
 
     show_dataframe(tru_lens_dashboard)
     
