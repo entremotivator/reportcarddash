@@ -66,9 +66,6 @@ st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard[
 st.header("Option 6: LLMS Scores vs. Feature1")
 st.scatter_chart(pd.DataFrame({'LLMS Score': tru_lens_dashboard['LLMS Score'], 'Feature1': tru_lens_dashboard['Feature1']}))
 
-# Option 7: Show a histogram of LLMS Scores
-st.header("Option 7: Histogram of LLMS Scores")
-st.hist_chart(tru_lens_dashboard['LLMS Score'])
 
 # Option 8: Show a number input for custom LLMS Score threshold
 st.header("Option 8: Custom LLMS Score Threshold")
