@@ -1,5 +1,4 @@
 import streamlit as st
-from dashboard import run_dashboard
 import pandas as pd
 import numpy as np
 from trulens_eval import Tru, Feedback, Select
