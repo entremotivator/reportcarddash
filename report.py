@@ -93,14 +93,35 @@ def main():
     st.sidebar.title("GPT Report Dashboard")
     
     # Add a file uploader to the sidebar
-    uploaded_file = st.sidebar.file_uploader("Upload a CSV file", type=["csv"])
+    uploaded_file = st.sidebar.file_uploader("Option 1: Upload a CSV file", type=["csv"])
 
     if uploaded_file is not None:
         tru_lens_dashboard = load_data(uploaded_file)
     else:
         tru_lens_dashboard = generate_data()
 
-    option_show_summary = st.sidebar.checkbox("Show Summary Statistics", value=True)
+    option_show_summary = st.sidebar.checkbox("Option 2: Show Summary Statistics", value=True)
+
+    # Option 3: API Keys
+    st.sidebar.header("Option 3: API Keys")
+    
+    # OpenAI API keys
+    st.sidebar.subheader("OpenAI Keys")
+    openai_key1 = st.sidebar.text_input("OpenAI Key 1")
+    openai_key2 = st.sidebar.text_input("OpenAI Key 2")
+    openai_key3 = st.sidebar.text_input("OpenAI Key 3")
+
+    # Google Cloud API keys
+    st.sidebar.subheader("Google Cloud Keys")
+    google_key1 = st.sidebar.text_input("Google Cloud Key 1")
+    google_key2 = st.sidebar.text_input("Google Cloud Key 2")
+    google_key3 = st.sidebar.text_input("Google Cloud Key 3")
+
+    # Hugging Face API keys
+    st.sidebar.subheader("Hugging Face Keys")
+    hugging_face_key1 = st.sidebar.text_input("Hugging Face Key 1")
+    hugging_face_key2 = st.sidebar.text_input("Hugging Face Key 2")
+    hugging_face_key3 = st.sidebar.text_input("Hugging Face Key 3")
 
     st.title("🚀 GPT Report Card 📊")
 
