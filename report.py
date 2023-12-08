@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
+import plotly
 
 # Assume `tru.run_dashboard()` returns the content of your dashboard
 def run_dashboard():
@@ -61,8 +62,11 @@ st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': tru_lens_dashboard[
 
 # Option 5: Show a pie chart for the distribution of LLMS Scores
 st.header("Option 5: Distribution of LLMS Scores")
-llms_counts = tru_lens_dashboard['LLMS Score'].value_counts()
-st.pie_chart(llms_counts)
+
+import plotly.express as px
+
+fig = px.pie(llms_counts, names='index', values='LLMS Score', title='Distribution of LLMS Scores')
+st.plotly_chart(fig)
 
 
 # Option 6: Show a scatter plot for LLMS Scores vs. another metric (Feature1)
