@@ -95,13 +95,6 @@ def main():
     
 st.title("TruLens Dashboard")
 
-# Placeholder for additional content or code for your TruLens Dashboard
-# ...
-
-# Example: Display a sample metric
-sample_metric = 85.5
-st.info(f"Current Accuracy: {sample_metric}%")
-
     show_dataframe(tru_lens_dashboard)
     
     if option_show_summary:
