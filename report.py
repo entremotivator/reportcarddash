@@ -77,11 +77,6 @@ chart = alt.Chart(tru_lens_dashboard).mark_bar().encode(x='Feature3', y='count()
 st.altair_chart(chart, use_container_width=True)
 
 
-# Option 9: Show a Bokeh chart for Feature5 over time
-st.header("Option 9: Feature5 over Time (Bokeh)")
-bokeh_chart_data = pd.DataFrame({'Time': time_data, 'Feature5': tru_lens_dashboard['Feature5']})
-st.bokeh_chart(bokeh_chart_data)
-
 # Option 10: Show a PyDeck chart for Feature6 and Feature7
 st.header("Option 10: Feature6 vs. Feature7 (PyDeck)")
 pydeck_chart_data = pd.DataFrame({'Feature6': tru_lens_dashboard['Feature6'], 'Feature7': tru_lens_dashboard['Feature7']})
