@@ -90,12 +90,12 @@ def show_feature14_distribution(data):
 def main():
     tru_lens_dashboard = generate_data()
 
-    st.sidebar.title("TruLens Dashboard Options")
+    st.sidebar.title("GPT Report Dashboard")
     option_show_summary = st.sidebar.checkbox("Show Summary Statistics", value=True)
     
     # ... Add other sidebar options
     
-    st.title("TruLens Dashboard")
+    st.title("🚀 GPT Report Card 📊")
 
     show_dataframe(tru_lens_dashboard)
     
