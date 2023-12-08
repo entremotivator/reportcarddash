@@ -266,7 +266,6 @@ def main():
     show_feature3_distribution(tru_lens_dashboard)
     show_cost_by_feature(tru_lens_dashboard)
     show_feature12_vs_feature13_scatter(tru_lens_dashboard)
-    show_feature14_distribution(tru_lens_dashboard)
 
     # New charts for each feature over time
     show_relevance_over_time(tru_lens_dashboard)
