@@ -383,19 +383,6 @@ def show_codegpt_page():
     date_range = st.slider("Select Date Range", 0, len(codegpt_metrics_data), (0, len(codegpt_metrics_data)))
     filtered_data = codegpt_metrics_data.iloc[date_range[0]:date_range[1], :]
 
-    
-    # Chart for Error Handling and Function/Method Modularity
-    st.subheader("Error Handling and Function/Method Modularity Over Time")
-    combined_error_modularity_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y=alt.Y(['Error Handling', 'Function/Method Modularity'], type='quantitative'),
-        tooltip=['Time', 'Error Handling', 'Function/Method Modularity']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(combined_error_modularity_chart)
-
 
 def generate_codegpt_metrics_data(num_code_blocks=100):
     data = {
