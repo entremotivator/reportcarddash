@@ -83,7 +83,7 @@ def main():
     st.title("🚀 GPT Report Card 📊")
 
 
-    if navigation_menu == "Dashboard":
+    if navigation_menu == "tru_lens_dashboard":
         st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
                     "✨ **Key Features:**\n"
                     "1. Real-time performance metrics 📈\n"
