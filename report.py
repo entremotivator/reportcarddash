@@ -315,8 +315,6 @@ def show_codegpt_page():
     code_completion_chart = code_completion_chart.interactive()
     st.altair_chart(code_completion_chart)
 
-
-
 st.subheader("New Metric 1 Distribution")
 new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
     x='New Metric 1',
