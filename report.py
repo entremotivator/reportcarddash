@@ -309,11 +309,6 @@ def generate_videogpt_metrics_data(num_frames=100):
     }
     return pd.DataFrame(data)
 
-    
-import streamlit as st
-import numpy as np
-import pandas as pd
-import altair as alt
 
 def show_codegpt_page():
     st.title("CodeGPT Page")
@@ -389,11 +384,6 @@ def show_codegpt_page():
     filtered_data = codegpt_metrics_data.iloc[date_range[0]:date_range[1], :]
 
     
-
-# Your existing code for other pages and functions
-# ...
-
-
     # Chart for Error Handling and Function/Method Modularity
     st.subheader("Error Handling and Function/Method Modularity Over Time")
     combined_error_modularity_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
@@ -406,18 +396,6 @@ def show_codegpt_page():
     )
     st.altair_chart(combined_error_modularity_chart)
 
-    # Chart for Cross-Language Compatibility
-    st.subheader("Cross-Language Compatibility Over Time")
-    compatibility_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Cross-Language Compatibility',
-        tooltip=['Time', 'Cross-Language Compatibility']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(compatibility_chart)
-        # Use filtered_data in subsequent charts
 
 def generate_codegpt_metrics_data(num_code_blocks=100):
     data = {
