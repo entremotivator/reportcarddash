@@ -315,7 +315,7 @@ def generate_videogpt_metrics_data(num_frames=100):
     return pd.DataFrame(data)
 
     def show_codegpt_page():
-    st.title("CodeGPT Page")
+        st.title("CodeGPT Page")
     
 
     # Generate random data for CodeGPT metrics
