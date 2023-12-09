@@ -147,8 +147,79 @@ def generate_imagegpt_metrics_data(num_images=100):
 
 def show_agentgpt_page():
     st.title("AgentGPT Page")
-    # Add content for AgentGPT page
-    # ...
+
+    # Generate random data for AgentGPT metrics
+    agentgpt_metrics_data = generate_agentgpt_metrics_data()
+
+    # Display charts for each metric
+    st.subheader("Task Completion Metrics")
+    st.line_chart(agentgpt_metrics_data[['Tasks Completed', 'Task Accuracy']])
+
+    st.subheader("Response Time Distribution")
+    response_time_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
+        x='Response Time',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(response_time_chart)
+
+    st.subheader("Task Completion Rate Over Time")
+    task_completion_rate_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Task Completion Rate',
+        tooltip=['Time', 'Task Completion Rate']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_completion_rate_chart)
+
+    st.subheader("Task Categories Breakdown")
+    task_categories_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
+        x='Task Category',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_categories_chart)
+
+    st.subheader("Automations Implemented")
+    st.bar_chart(agentgpt_metrics_data['Automations Implemented'])
+
+    st.subheader("Task Efficiency")
+    task_efficiency_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Task Efficiency',
+        tooltip=['Time', 'Task Efficiency']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_efficiency_chart)
+
+    # Add more charts and metrics as needed
+
+def generate_agentgpt_metrics_data(num_tasks=100):
+    data = {
+        'Tasks Completed': np.random.randint(20, 100, num_tasks),
+        'Task Accuracy': np.random.uniform(0.8, 1.0, num_tasks),
+        'Response Time': np.random.uniform(0.5, 5.0, num_tasks),
+        'Task Completion Rate': np.random.uniform(0.7, 1.0, num_tasks),
+        'Task Category': np.random.choice(['Sales', 'Customer Support', 'Data Entry'], num_tasks),
+        'Automations Implemented': np.random.randint(5, 20, num_tasks),
+        'Task Efficiency': np.random.uniform(0.6, 1.0, num_tasks),
+        'Time': np.arange(num_tasks),
+        # Add more metrics as needed
+    }
+    return pd.DataFrame(data)
+
+# Your existing code for other pages and functions
+# ...
 
 def show_videogpt_page():
     st.title("VideoGPT Page")
