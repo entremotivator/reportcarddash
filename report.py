@@ -317,15 +317,14 @@ def show_codegpt_page():
     codegpt_metrics_data = generate_codegpt_metrics_data()
 
     # Display charts for each metric using Altair
-    st.subheader("Code Completed and Code Accuracy Over Time")
-    code_completion_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y=['Code Completed', 'Code Accuracy'],
-        tooltip=['Time', 'Code Completed', 'Code Accuracy']
-    ).properties(
-        width=800,
-        height=400
-    )
+   st.subheader("Code Completed and Code Accuracy Over Time")
+code_completion_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+    x='Time',
+    y=['Code Completed', 'Code Accuracy']
+).properties(
+    width=800,
+    height=400
+).interactive()
     st.altair_chart(code_completion_chart)
 
     st.subheader("Response Time Distribution")
