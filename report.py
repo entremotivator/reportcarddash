@@ -315,16 +315,7 @@ def show_codegpt_page():
     code_completion_chart = code_completion_chart.interactive()
     st.altair_chart(code_completion_chart)
 
-st.subheader("Response Time Distribution")
-    response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-        x=alt.X('Response Time', bin=alt.Bin(maxbins=20)),
-        y='count()',
-        tooltip=['count()']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(response_time_chart)
+
 
 st.subheader("New Metric 1 Distribution")
 new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
