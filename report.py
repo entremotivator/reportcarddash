@@ -327,17 +327,7 @@ def show_codegpt_page():
         height=400
     )
     st.altair_chart(code_accuracy_chart)
-
-    st.subheader("Code Efficiency Distribution")
-    code_efficiency_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-        x=alt.X('Code Efficiency', bin=alt.Bin(maxbins=20)),
-        y='count()',
-        tooltip=['count()']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(code_efficiency_chart)
+    
 
     st.subheader("Code Completeness Over Time")
     code_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
