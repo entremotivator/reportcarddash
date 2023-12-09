@@ -312,7 +312,6 @@ def generate_videogpt_metrics_data(num_frames=100):
 
 def show_codegpt_page():
     st.title("CodeGPT Page")
-    code_completion_chart = code_completion_chart.interactive()
     st.altair_chart(code_completion_chart)
 
 st.subheader("New Metric 1 Distribution")
