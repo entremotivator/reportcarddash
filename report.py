@@ -117,6 +117,33 @@ def show_textgpt_page():
         st.subheader(metric)
         st.line_chart(tru_lens_df[metric])
 
+def show_imagegpt_page():
+    st.title("ImageGPT Page")
+
+    # Generate random data for ImageGPT metrics
+    imagegpt_metrics_data = generate_imagegpt_metrics_data()
+
+    # Display charts for each metric
+    for metric in imagegpt_metrics_data.columns:
+        st.subheader(metric)
+        st.line_chart(imagegpt_metrics_data[metric])
+
+def generate_imagegpt_metrics_data(num_images=100):
+    data = {
+        'Accuracy': np.random.uniform(0.8, 1.0, num_images),
+        'Precision': np.random.uniform(0.7, 1.0, num_images),
+        'Recall': np.random.uniform(0.7, 1.0, num_images),
+        'F1 Score': np.random.uniform(0.7, 1.0, num_images),
+        'IoU (Intersection over Union)': np.random.uniform(0.6, 1.0, num_images),
+        'Top-1 Accuracy': np.random.uniform(0.8, 1.0, num_images),
+        'Top-5 Accuracy': np.random.uniform(0.7, 1.0, num_images),
+        'Mean Average Precision (mAP)': np.random.uniform(0.6, 1.0, num_images),
+        'Perceptual Metrics (SSI)': np.random.uniform(0.6, 1.0, num_images),
+        'Robustness': np.random.uniform(0.7, 1.0, num_images),
+        'Latency': np.random.uniform(0.1, 0.5, num_images),  # Assuming latency is in seconds
+    }
+    return pd.DataFrame(data)
+
 
 def show_agentgpt_page():
     st.title("AgentGPT Page")
@@ -170,7 +197,7 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT"])
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT"])
 
     if navigation_menu == "Dashboard":
         st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
@@ -197,6 +224,8 @@ def main():
         show_codegpt_page()
     elif navigation_menu == "Audio/TTSGPT":
         show_audiotts_page()
+    elif navigation_menu == "ImageGPT":
+        show_imagegpt_page()
         
 
 if __name__ == "__main__":
