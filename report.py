@@ -49,6 +49,31 @@ def show_analysis_page():
     # Add your analysis options here
     # ...
 
+def show_textgpt_page():
+    st.title("TextGPT Page")
+    # Add content for TextGPT page
+    # ...
+
+def show_agentgpt_page():
+    st.title("AgentGPT Page")
+    # Add content for AgentGPT page
+    # ...
+
+def show_videogpt_page():
+    st.title("VideoGPT Page")
+    # Add content for VideoGPT page
+    # ...
+
+def show_codegpt_page():
+    st.title("CodeGPT Page")
+    # Add content for CodeGPT page
+    # ...
+
+def show_audiotts_page():
+    st.title("Audio/TTSGPT Page")
+    # Add content for Audio/TTSGPT page
+    # ...
+
 def show_relevance_over_time(data):
     st.header("Relevance over Time")
     chart = alt.Chart(data).mark_line().encode(
