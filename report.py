@@ -49,7 +49,6 @@ def show_analysis_page():
     # Add your analysis options here
     # ...
 
-
 def show_relevance_over_time(data):
     st.header("Relevance over Time")
     chart = alt.Chart(data).mark_line().encode(
@@ -82,8 +81,9 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page"])
 
-    if navigation_menu == "tru_lens_dashboard":
+    if navigation_menu == "Dashboard":
         st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
                     "✨ **Key Features:**\n"
                     "1. Real-time performance metrics 📈\n"
@@ -96,22 +96,8 @@ def main():
 
         show_relevance_over_time(tru_lens_dashboard)
         # Add other dashboard functions here
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT"])
-
-    if navigation_menu == "Dashboard":
-        show_dashboard(tru_lens_dashboard)
     elif navigation_menu == "Analysis Page":
         show_analysis_page()
-    elif navigation_menu == "TextGPT":
-        show_textgpt_page()
-    elif navigation_menu == "AgentGPT":
-        show_agentgpt_page()
-    elif navigation_menu == "VideoGPT":
-        show_videogpt_page()
-    elif navigation_menu == "CodeGPT":
-        show_codegpt_page()
-    elif navigation_menu == "Audio/TTSGPT":
-        show_audiotts_page()
 
 if __name__ == "__main__":
     main()
