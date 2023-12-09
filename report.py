@@ -316,68 +316,116 @@ def show_codegpt_page():
     # Generate random data for CodeGPT metrics
     codegpt_metrics_data = generate_codegpt_metrics_data()
 
-    # Display charts for each metric
-    st.subheader("Code Completion Metrics")
-    st.line_chart(codegpt_metrics_data[['Code Completed', 'Code Accuracy']])
-
-    st.subheader("Response Time Distribution")
-    response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-        x='Response Time',
-        y='count()',
-        tooltip=['count()']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(response_time_chart)
-
-    # Add more charts for new metrics
-    st.subheader("New Metric 1 Distribution")
-    new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-        x='New Metric 1',
-        y='count()',
-        tooltip=['count()']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(new_metric1_chart)
-
-    st.subheader("New Metric 2 Over Time")
-    new_metric2_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+    # Display charts for each metric using Altair
+    st.subheader("Code Accuracy Over Time")
+    code_accuracy_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
         x='Time',
-        y='New Metric 2',
-        tooltip=['Time', 'New Metric 2']
+        y='Code Accuracy',
+        tooltip=['Time', 'Code Accuracy']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(new_metric2_over_time_chart)
+    st.altair_chart(code_accuracy_chart)
 
-    # Add more charts for additional metrics...
-    st.subheader("Metric 4 Over Time")
-    metric4_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Metric 4',
-        tooltip=['Time', 'Metric 4']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(metric4_over_time_chart)
-
-    st.subheader("Metric 5 Distribution")
-    metric5_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-        x='Metric 5',
+    st.subheader("Code Efficiency Distribution")
+    code_efficiency_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x=alt.X('Code Efficiency', bin=alt.Bin(maxbins=20)),
         y='count()',
         tooltip=['count()']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(metric5_distribution_chart)
+    st.altair_chart(code_efficiency_chart)
 
-    # Add more charts for additional metrics...
+    st.subheader("Code Completeness Over Time")
+    code_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Code Completeness',
+        tooltip=['Time', 'Code Completeness']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(code_completeness_chart)
+
+    st.subheader("Variable Naming Conventions Distribution")
+    variable_naming_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Variable Naming Conventions',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(variable_naming_chart)
+
+    st.subheader("Code Readability Over Time")
+    code_readability_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Code Readability',
+        tooltip=['Time', 'Code Readability']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(code_readability_chart)
+
+    st.subheader("Error Handling Distribution")
+    error_handling_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Error Handling',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(error_handling_chart)
+
+    st.subheader("Function/Method Modularity Over Time")
+    modularity_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Function/Method Modularity',
+        tooltip=['Time', 'Function/Method Modularity']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(modularity_chart)
+
+    st.subheader("Consistency in Style Distribution")
+    style_consistency_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Consistency in Style',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(style_consistency_chart)
+
+    st.subheader("Use of Best Practices Over Time")
+    best_practices_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Use of Best Practices',
+        tooltip=['Time', 'Use of Best Practices']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(best_practices_chart)
+
+    st.subheader("Cross-Language Compatibility Distribution")
+    cross_language_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Cross-Language Compatibility',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(cross_language_chart)
 
     # Add interactive filters
     date_range = st.slider("Select Date Range", 0, len(codegpt_metrics_data), (0, len(codegpt_metrics_data)))
