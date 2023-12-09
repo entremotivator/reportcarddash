@@ -253,7 +253,7 @@ def main():
     show_stereotypes_over_time(tru_lens_dashboard)
     show_summarization_over_time(tru_lens_dashboard)
 
-elif navigation_menu == "Analysis Page":
+ elif navigation_menu == "Analysis Page":
         show_analysis_page()
 
 if __name__ == "__main__":
