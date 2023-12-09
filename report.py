@@ -310,51 +310,89 @@ def generate_videogpt_metrics_data(num_frames=100):
     return pd.DataFrame(data)
 
     
+import streamlit as st
+import numpy as np
+import pandas as pd
+import altair as alt
+
 def show_codegpt_page():
     st.title("CodeGPT Page")
 
     # Generate random data for CodeGPT metrics
-    num_samples = NUM_ROWS  # Assuming you want to use NUM_ROWS
-    data = {
-        'Time': np.arange(num_samples),
-        'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
-        'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
-        'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
-        'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
-        'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
-        'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
-        'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
-    }
+    codegpt_metrics_data = generate_codegpt_metrics_data()
 
-    codegpt_metrics_data = pd.DataFrame(data)
+    # Display charts for each metric
+    st.subheader("Code Completion Metrics")
+    st.line_chart(codegpt_metrics_data[['Code Completed', 'Code Accuracy']])
 
-   
-    # Chart for Code Accuracy and Code Completeness
-    st.subheader("Code Accuracy and Code Completeness Over Time")
-    combined_accuracy_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y=alt.Y(['Code Accuracy', 'Code Completeness'], type='quantitative'),
-        tooltip=['Time', 'Code Accuracy', 'Code Completeness']
+    st.subheader("Response Time Distribution")
+    response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Response Time',
+        y='count()',
+        tooltip=['count()']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(combined_accuracy_completeness_chart)
+    st.altair_chart(response_time_chart)
 
-    # Chart for Code Readability
-    st.subheader("Code Readability Over Time")
-    readability_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Code Readability',
-        tooltip=['Time', 'Code Readability']
+    # Add more charts for new metrics
+    st.subheader("New Metric 1 Distribution")
+    new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='New Metric 1',
+        y='count()',
+        tooltip=['count()']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(readability_chart)
+    st.altair_chart(new_metric1_chart)
+
+    st.subheader("New Metric 2 Over Time")
+    new_metric2_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='New Metric 2',
+        tooltip=['Time', 'New Metric 2']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(new_metric2_over_time_chart)
+
+    # Add more charts for additional metrics...
+    st.subheader("Metric 4 Over Time")
+    metric4_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Metric 4',
+        tooltip=['Time', 'Metric 4']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric4_over_time_chart)
+
+    st.subheader("Metric 5 Distribution")
+    metric5_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Metric 5',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric5_distribution_chart)
+
+    # Add more charts for additional metrics...
+
+    # Add interactive filters
+    date_range = st.slider("Select Date Range", 0, len(codegpt_metrics_data), (0, len(codegpt_metrics_data)))
+    filtered_data = codegpt_metrics_data.iloc[date_range[0]:date_range[1], :]
+
+    
+
+# Your existing code for other pages and functions
+# ...
+
 
     # Chart for Error Handling and Function/Method Modularity
     st.subheader("Error Handling and Function/Method Modularity Over Time")
@@ -379,7 +417,28 @@ def show_codegpt_page():
         height=400
     )
     st.altair_chart(compatibility_chart)
-    # Rest of your code...
+        # Use filtered_data in subsequent charts
+
+def generate_codegpt_metrics_data(num_code_blocks=100):
+    data = {
+        'Code Completed': np.random.randint(20, 100, num_code_blocks),
+        'Code Accuracy': np.random.uniform(0.8, 1.0, num_code_blocks),
+        'Response Time': np.random.uniform(0.5, 5.0, num_code_blocks),
+        'New Metric 1': np.random.uniform(0, 1, num_code_blocks),
+        'New Metric 2': np.random.randint(1, 10, num_code_blocks),
+        'Metric 3': np.random.choice(['A', 'B', 'C'], num_code_blocks),
+        'Metric 4': np.random.uniform(0.5, 1.0, num_code_blocks),
+        'Metric 5': np.random.choice([True, False], num_code_blocks),
+        'Metric 6': np.random.normal(0, 1, num_code_blocks),
+        'Metric 7': np.random.randint(5, 20, num_code_blocks),
+        'Metric 8': np.random.uniform(0.6, 1.0, num_code_blocks),
+        'Metric 9': np.random.choice([10, 20, 30], num_code_blocks),
+        'Metric 10': np.random.uniform(0, 1, num_code_blocks),
+        'Time': np.arange(num_code_blocks),
+        # Add more metrics as needed
+    }
+    return pd.DataFrame(data)
+    
     
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
