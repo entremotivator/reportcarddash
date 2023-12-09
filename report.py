@@ -348,8 +348,6 @@ all_metrics_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
     list(codegpt_metrics_data.columns[1:]),
     columns=2  # You can adjust the number of columns as needed
 )
-    # Additional charts
-    st.subheader("Additional Charts")
 
     # Chart for Code Accuracy and Code Completeness
     st.subheader("Code Accuracy and Code Completeness Over Time")
