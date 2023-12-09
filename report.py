@@ -317,15 +317,7 @@ def show_codegpt_page():
 code_completion_chart = code_completion_chart.interactive()
 st.altair_chart(code_completion_chart)
 
-    st.subheader("Code Completed and Code Accuracy Over Time")
-code_completion_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-    x='Time',
-    y=['Code Completed', 'Code Accuracy']
-).properties(
-    width=800,
-    height=400
-).interactive()
-st.altair_chart(code_completion_chart)
+    
 
 st.subheader("Response Time Distribution")
 response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
