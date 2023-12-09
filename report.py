@@ -336,19 +336,7 @@ def show_codegpt_page():
 
     codegpt_metrics_data = pd.DataFrame(data)
 
-    # Create a combined chart for all metrics
-all_metrics_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-    x='Time',
-    y=alt.Y(alt.repeat("column"), type='quantitative'),  # Corrected from "list" to "column"
-    tooltip=['Time'] + [alt.Tooltip(field, type='quantitative') for field in codegpt_metrics_data.columns if field != 'Time']
-).properties(
-    width=800,
-    height=400
-).repeat(
-    list(codegpt_metrics_data.columns[1:]),
-    columns=2  # You can adjust the number of columns as needed
-)
-
+   
     # Chart for Code Accuracy and Code Completeness
     st.subheader("Code Accuracy and Code Completeness Over Time")
     combined_accuracy_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
