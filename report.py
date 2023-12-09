@@ -317,18 +317,126 @@ def show_codegpt_page():
     codegpt_metrics_data = generate_codegpt_metrics_data()
 
     # Display charts for each metric using Altair
-    st.subheader("Code Accuracy Over Time")
-    code_accuracy_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+    st.subheader("Code Completed and Code Accuracy Over Time")
+    code_completion_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
         x='Time',
-        y='Code Accuracy',
-        tooltip=['Time', 'Code Accuracy']
+        y=['Code Completed', 'Code Accuracy'],
+        tooltip=['Time', 'Code Completed', 'Code Accuracy']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(code_accuracy_chart)
-    
+    st.altair_chart(code_completion_chart)
 
+    st.subheader("Response Time Distribution")
+    response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x=alt.X('Response Time', bin=alt.Bin(maxbins=20)),
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(response_time_chart)
+
+    st.subheader("New Metric 1 Distribution")
+    new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='New Metric 1',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(new_metric1_chart)
+
+    st.subheader("New Metric 2 Over Time")
+    new_metric2_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='New Metric 2',
+        tooltip=['Time', 'New Metric 2']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(new_metric2_over_time_chart)
+
+    st.subheader("Metric 4 Over Time")
+    metric4_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Metric 4',
+        tooltip=['Time', 'Metric 4']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric4_over_time_chart)
+
+    st.subheader("Metric 5 Distribution")
+    metric5_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Metric 5',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric5_distribution_chart)
+
+    st.subheader("Metric 6 Distribution")
+    metric6_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Metric 6',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric6_distribution_chart)
+
+    st.subheader("Metric 7 Over Time")
+    metric7_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Metric 7',
+        tooltip=['Time', 'Metric 7']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric7_over_time_chart)
+
+    st.subheader("Metric 8 Distribution")
+    metric8_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Metric 8',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric8_distribution_chart)
+
+    st.subheader("Metric 9 Distribution")
+    metric9_distribution_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x='Metric 9',
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric9_distribution_chart)
+
+    st.subheader("Metric 10 Over Time")
+    metric10_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Metric 10',
+        tooltip=['Time', 'Metric 10']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(metric10_over_time_chart)
 
     st.subheader("Variable Naming Conventions Distribution")
     variable_naming_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
@@ -428,10 +536,17 @@ def generate_codegpt_metrics_data(num_code_blocks=100):
         'Metric 9': np.random.choice([10, 20, 30], num_code_blocks),
         'Metric 10': np.random.uniform(0, 1, num_code_blocks),
         'Time': np.arange(num_code_blocks),
+        'Code Efficiency': np.random.uniform(0.5, 1.0, num_code_blocks),
+        'Variable Naming Conventions': np.random.choice(['Snake_Case', 'camelCase', 'PascalCase'], num_code_blocks),
+        'Code Readability': np.random.uniform(0.5, 1.0, num_code_blocks),
+        'Error Handling': np.random.choice(['Yes', 'No'], num_code_blocks),
+        'Function/Method Modularity': np.random.uniform(0.5, 1.0, num_code_blocks),
+        'Consistency in Style': np.random.choice(['High', 'Medium', 'Low'], num_code_blocks),
+        'Use of Best Practices': np.random.uniform(0.5, 1.0, num_code_blocks),
+        'Cross-Language Compatibility': np.random.choice(['Yes', 'No'], num_code_blocks),
         # Add more metrics as needed
     }
     return pd.DataFrame(data)
-    
     
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
