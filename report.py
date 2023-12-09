@@ -316,14 +316,7 @@ def show_codegpt_page():
     # Generate random data for CodeGPT metrics
     codegpt_metrics_data = generate_codegpt_metrics_data()
 
-   st.subheader("Code Completed and Code Accuracy Over Time")
-code_completion_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-    x='Time',
-    y=['Code Completed', 'Code Accuracy']
-).properties(
-    width=800,
-    height=400
-)
+   
 code_completion_chart = code_completion_chart.interactive()
 st.altair_chart(code_completion_chart)
 
