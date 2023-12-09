@@ -41,7 +41,43 @@ def generate_data(num_agents=NUM_AGENTS, num_rows=NUM_ROWS):
 
 def load_data(file):
     return pd.read_csv(file)
+def show_dataframe(data):
+    st.header("Option 1: Display TruLens DataFrame")
+    st.dataframe(data)
 
+def show_summary_statistics(data):
+    st.header("Option 2: Summary Statistics")
+    st.write(data.describe())
+
+def show_llms_scores_by_agent(data):
+    st.header("Option 3: LLMS Scores by Agent")
+    bar_chart_data = data.groupby('Agent')['LLMS Score'].mean()
+    st.bar_chart(bar_chart_data)
+
+def show_feature2_distribution(data):
+    st.header("Option 4: Feature2 Distribution")
+    area_chart_data = data.groupby('Agent')['Feature2'].sum()
+    st.area_chart(area_chart_data)
+
+def show_llms_scores_over_time(data):
+    st.header("Option 5: LLMS Scores over Time")
+    time_data = np.arange(len(data))
+    st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': data['LLMS Score']}))
+
+def show_llms_scores_vs_feature1(data):
+    st.header("Option 6: LLMS Scores vs. Feature1")
+    st.scatter_chart(pd.DataFrame({'LLMS Score': data['LLMS Score'], 'Feature1': data['Feature1']}))
+
+def show_feature3_distribution(data):
+    st.header("Option 7: Feature3 Distribution")
+    chart = alt.Chart(data).mark_bar().encode(x='Feature3', y='count()')
+    st.altair_chart(chart, use_container_width=True)
+
+def show_cost_by_feature(data):
+    st.header("Option 8: Cost by Feature")
+    scatter_chart_data = pd.DataFrame({'Cost': data['Cost'], 'Feature4': data['Feature4']})
+    st.scatter_chart(scatter_chart_data)
+    
 def show_relevance_over_time(data):
     st.header("Relevance over Time")
     chart = alt.Chart(data).mark_line().encode(
