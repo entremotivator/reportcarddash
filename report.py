@@ -340,7 +340,6 @@ new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
     height=400
 )
 st.altair_chart(new_metric1_chart)
-    st.altair_chart(new_metric1_chart)
 
     st.subheader("New Metric 2 Over Time")
     new_metric2_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
