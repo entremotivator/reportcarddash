@@ -202,8 +202,56 @@ def show_agentgpt_page():
     )
     st.altair_chart(task_efficiency_chart)
 
-    # Add more charts and metrics as needed
+    st.subheader("Task Efficiency by Task Category")
+    task_efficiency_by_category_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
+        x='Task Category',
+        y='mean(Task Efficiency)',
+        tooltip=['mean(Task Efficiency)']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_efficiency_by_category_chart)
 
+    st.subheader("Task Accuracy Over Time")
+    task_accuracy_over_time_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Task Accuracy',
+        tooltip=['Time', 'Task Accuracy']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_accuracy_over_time_chart)
+
+    st.subheader("Task Categories Breakdown by Response Time")
+    task_categories_response_time_chart = alt.Chart(agentgpt_metrics_data).mark_boxplot().encode(
+        x='Task Category',
+        y='Response Time',
+        tooltip=['Task Category', 'Response Time']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_categories_response_time_chart)
+
+    st.subheader("Task Completion Rate Distribution")
+    task_completion_rate_distribution_chart = alt.Chart(agentgpt_metrics_data).mark_histogram().encode(
+        x='Task Completion Rate:Q',
+        y='count()',
+        tooltip=['count()'],
+        bin=alt.Bin(maxbins=20)
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(task_completion_rate_distribution_chart)
+
+    # Add interactive filters
+    date_range = st.slider("Select Date Range", 0, len(agentgpt_metrics_data), (0, len(agentgpt_metrics_data)))
+    filtered_data = agentgpt_metrics_data.iloc[date_range[0]:date_range[1], :]
+
+    # Use filtered_data in subsequent charts
 def generate_agentgpt_metrics_data(num_tasks=100):
     data = {
         'Tasks Completed': np.random.randint(20, 100, num_tasks),
