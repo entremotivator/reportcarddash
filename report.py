@@ -223,8 +223,96 @@ def generate_agentgpt_metrics_data(num_tasks=100):
 
 def show_videogpt_page():
     st.title("VideoGPT Page")
-    # Add content for VideoGPT page
-    # ...
+
+    # Generate random data for VideoGPT metrics
+    videogpt_metrics_data = generate_videogpt_metrics_data()
+
+    # Display charts for each metric
+    st.subheader("Video Quality Over Time")
+    video_quality_chart = alt.Chart(videogpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Video Quality',
+        tooltip=['Time', 'Video Quality']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(video_quality_chart)
+
+    st.subheader("Frame Rate Over Time")
+    frame_rate_chart = alt.Chart(videogpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Frame Rate',
+        tooltip=['Time', 'Frame Rate']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(frame_rate_chart)
+
+    st.subheader("Object Detection Accuracy")
+    st.line_chart(videogpt_metrics_data['Object Detection Accuracy'])
+
+    st.subheader("Action Recognition Accuracy")
+    st.line_chart(videogpt_metrics_data['Action Recognition Accuracy'])
+
+    st.subheader("Temporal Coherence Over Time")
+    temporal_coherence_chart = alt.Chart(videogpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Temporal Coherence',
+        tooltip=['Time', 'Temporal Coherence']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(temporal_coherence_chart)
+
+    st.subheader("Scene Transition Quality")
+    st.line_chart(videogpt_metrics_data['Scene Transition Quality'])
+
+    st.subheader("Generative Diversity Over Time")
+    generative_diversity_chart = alt.Chart(videogpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Generative Diversity',
+        tooltip=['Time', 'Generative Diversity']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(generative_diversity_chart)
+
+    st.subheader("Audio-Visual Synchronization")
+    st.line_chart(videogpt_metrics_data['Audio-Visual Synchronization'])
+
+    st.subheader("Robustness to Occlusions")
+    st.line_chart(videogpt_metrics_data['Robustness to Occlusions'])
+
+    st.subheader("Latency Over Time")
+    latency_chart = alt.Chart(videogpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Latency',
+        tooltip=['Time', 'Latency']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(latency_chart)
+
+def generate_videogpt_metrics_data(num_frames=100):
+    data = {
+        'Time': np.arange(num_frames),
+        'Video Quality': np.random.uniform(0.7, 1.0, num_frames),
+        'Frame Rate': np.random.uniform(24, 60, num_frames),
+        'Object Detection Accuracy': np.random.uniform(0.7, 1.0, num_frames),
+        'Action Recognition Accuracy': np.random.uniform(0.7, 1.0, num_frames),
+        'Temporal Coherence': np.random.uniform(0.7, 1.0, num_frames),
+        'Scene Transition Quality': np.random.uniform(0.7, 1.0, num_frames),
+        'Generative Diversity': np.random.uniform(0.7, 1.0, num_frames),
+        'Audio-Visual Synchronization': np.random.uniform(0.7, 1.0, num_frames),
+        'Robustness to Occlusions': np.random.uniform(0.7, 1.0, num_frames),
+        'Latency': np.random.uniform(0.1, 0.5, num_frames),  # Assuming latency is in seconds
+    }
+    return pd.DataFrame(data)
 
 def show_codegpt_page():
     st.title("CodeGPT Page")
