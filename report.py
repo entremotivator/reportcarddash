@@ -386,26 +386,24 @@ def show_codegpt_page():
         height=400
     )
     st.altair_chart(compatibility_chart)
-    def generate_codegpt_metrics_data(num_samples=100):
-    data = {
-        'Time': np.arange(num_samples),
-        'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
-        'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
-        'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
-        'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
-        'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
-        'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
-        'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
-        'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
-    }
-    return pd.DataFrame(data)
-
+data = {
+    'Time': np.arange(num_samples),
+    'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
+    'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
+    'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
+    'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
+    'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
+    'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
+    'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
+    'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
+    'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
+    'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
+}
+return pd.DataFrame(data)
 
 if __name__ == "__main__":
-
-
+    # Rest of your code...
+    
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
 
