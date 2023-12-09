@@ -166,92 +166,37 @@ def show_agentgpt_page():
     )
     st.altair_chart(response_time_chart)
 
-    st.subheader("Task Completion Rate Over Time")
-    task_completion_rate_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Task Completion Rate',
-        tooltip=['Time', 'Task Completion Rate']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(task_completion_rate_chart)
-
-    st.subheader("Task Categories Breakdown")
-    task_categories_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
-        x='Task Category',
+    # Add more charts for new metrics
+    st.subheader("New Metric 1 Distribution")
+    new_metric1_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
+        x='New Metric 1',
         y='count()',
         tooltip=['count()']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(task_categories_chart)
+    st.altair_chart(new_metric1_chart)
 
-    st.subheader("Automations Implemented")
-    st.bar_chart(agentgpt_metrics_data['Automations Implemented'])
-
-    st.subheader("Task Efficiency")
-    task_efficiency_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
+    st.subheader("New Metric 2 Over Time")
+    new_metric2_over_time_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
         x='Time',
-        y='Task Efficiency',
-        tooltip=['Time', 'Task Efficiency']
+        y='New Metric 2',
+        tooltip=['Time', 'New Metric 2']
     ).properties(
         width=800,
         height=400
     )
-    st.altair_chart(task_efficiency_chart)
+    st.altair_chart(new_metric2_over_time_chart)
 
-    st.subheader("Task Efficiency by Task Category")
-    task_efficiency_by_category_chart = alt.Chart(agentgpt_metrics_data).mark_bar().encode(
-        x='Task Category',
-        y='mean(Task Efficiency)',
-        tooltip=['mean(Task Efficiency)']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(task_efficiency_by_category_chart)
-
-    st.subheader("Task Accuracy Over Time")
-    task_accuracy_over_time_chart = alt.Chart(agentgpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Task Accuracy',
-        tooltip=['Time', 'Task Accuracy']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(task_accuracy_over_time_chart)
-
-    st.subheader("Task Categories Breakdown by Response Time")
-    task_categories_response_time_chart = alt.Chart(agentgpt_metrics_data).mark_boxplot().encode(
-        x='Task Category',
-        y='Response Time',
-        tooltip=['Task Category', 'Response Time']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(task_categories_response_time_chart)
-
-    st.subheader("Task Completion Rate Distribution")
-    task_completion_rate_distribution_chart = alt.Chart(agentgpt_metrics_data).mark_histogram().encode(
-        x='Task Completion Rate:Q',
-        y='count()',
-        tooltip=['count()'],
-        bin=alt.Bin(maxbins=20)
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(task_completion_rate_distribution_chart)
+    # Add more charts for additional metrics...
 
     # Add interactive filters
     date_range = st.slider("Select Date Range", 0, len(agentgpt_metrics_data), (0, len(agentgpt_metrics_data)))
     filtered_data = agentgpt_metrics_data.iloc[date_range[0]:date_range[1], :]
 
     # Use filtered_data in subsequent charts
+
 def generate_agentgpt_metrics_data(num_tasks=100):
     data = {
         'Tasks Completed': np.random.randint(20, 100, num_tasks),
@@ -261,6 +206,8 @@ def generate_agentgpt_metrics_data(num_tasks=100):
         'Task Category': np.random.choice(['Sales', 'Customer Support', 'Data Entry'], num_tasks),
         'Automations Implemented': np.random.randint(5, 20, num_tasks),
         'Task Efficiency': np.random.uniform(0.6, 1.0, num_tasks),
+        'New Metric 1': np.random.uniform(0, 1, num_tasks),  # New metric
+        'New Metric 2': np.random.randint(1, 10, num_tasks),  # Another new metric
         'Time': np.arange(num_tasks),
         # Add more metrics as needed
     }
