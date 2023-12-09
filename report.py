@@ -21,6 +21,7 @@ def generate_data(num_agents=NUM_AGENTS, num_rows=NUM_ROWS):
         'Stereotypes': np.random.randint(1, 100, num_rows),
         'Summarization': np.random.randint(1, 100, num_rows),
         'Embeddings Distance': np.random.randint(1, 100, num_rows),
+        'Time': np.arange(num_rows),  # Added Time variable
         'Feature1': np.random.normal(0, 1, num_rows),
         'Feature2': np.random.uniform(0, 1, num_rows),
         'Feature3': np.random.choice(['A', 'B', 'C'], num_rows),
@@ -41,53 +42,8 @@ def generate_data(num_agents=NUM_AGENTS, num_rows=NUM_ROWS):
 def load_data(file):
     return pd.read_csv(file)
 
-def show_dataframe(data):
-    st.header("Option 1: Display TruLens DataFrame")
-    st.dataframe(data)
-
-def show_summary_statistics(data):
-    st.header("Option 2: Summary Statistics")
-    st.write(data.describe())
-
-def show_llms_scores_by_agent(data):
-    st.header("Option 3: LLMS Scores by Agent")
-    bar_chart_data = data.groupby('Agent')['LLMS Score'].mean()
-    st.bar_chart(bar_chart_data)
-
-def show_feature2_distribution(data):
-    st.header("Option 4: Feature2 Distribution")
-    area_chart_data = data.groupby('Agent')['Feature2'].sum()
-    st.area_chart(area_chart_data)
-
-def show_llms_scores_over_time(data):
-    st.header("Option 5: LLMS Scores over Time")
-    time_data = np.arange(len(data))
-    st.line_chart(pd.DataFrame({'Time': time_data, 'LLMS Score': data['LLMS Score']}))
-
-def show_llms_scores_vs_feature1(data):
-    st.header("Option 6: LLMS Scores vs. Feature1")
-    st.scatter_chart(pd.DataFrame({'LLMS Score': data['LLMS Score'], 'Feature1': data['Feature1']}))
-
-def show_feature3_distribution(data):
-    st.header("Option 7: Feature3 Distribution")
-    chart = alt.Chart(data).mark_bar().encode(x='Feature3', y='count()')
-    st.altair_chart(chart, use_container_width=True)
-
-def show_cost_by_feature(data):
-    st.header("Option 8: Cost by Feature")
-    scatter_chart_data = pd.DataFrame({'Cost': data['Cost'], 'Feature4': data['Feature4']})
-    st.scatter_chart(scatter_chart_data)
-
-def show_feature12_vs_feature13_scatter(data):
-    st.header("Option 12: Feature12 vs. Feature13 Scatter Plot")
-    st.scatter_chart(pd.DataFrame({'Feature12': data['Feature12'], 'Feature13': data['Feature13']}))
-
-
-# ... Add more chart functions for each feature over time
-
 def show_relevance_over_time(data):
     st.header("Relevance over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Relevance',
@@ -100,7 +56,6 @@ def show_relevance_over_time(data):
 
 def show_groundedness_over_time(data):
     st.header("Groundedness over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Groundedness',
@@ -113,7 +68,6 @@ def show_groundedness_over_time(data):
 
 def show_sentiment_over_time(data):
     st.header("Sentiment over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Sentiment',
@@ -126,7 +80,6 @@ def show_sentiment_over_time(data):
 
 def show_model_agreement_over_time(data):
     st.header("Model Agreement over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Model Agreement',
@@ -139,7 +92,6 @@ def show_model_agreement_over_time(data):
 
 def show_language_match_over_time(data):
     st.header("Language Match over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Language Match',
@@ -152,7 +104,6 @@ def show_language_match_over_time(data):
 
 def show_toxicity_over_time(data):
     st.header("Toxicity over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Toxicity',
@@ -165,7 +116,6 @@ def show_toxicity_over_time(data):
 
 def show_moderation_over_time(data):
     st.header("Moderation over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Moderation',
@@ -178,7 +128,6 @@ def show_moderation_over_time(data):
 
 def show_stereotypes_over_time(data):
     st.header("Stereotypes over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Stereotypes',
@@ -191,7 +140,6 @@ def show_stereotypes_over_time(data):
 
 def show_summarization_over_time(data):
     st.header("Summarization over Time")
-    time_data = np.arange(len(data))
     chart = alt.Chart(data).mark_line().encode(
         x='Time',
         y='Summarization',
@@ -201,8 +149,6 @@ def show_summarization_over_time(data):
         height=400
     )
     st.altair_chart(chart)
-
-# ... Add more chart functions for each feature over time
 
 def main():
     st.sidebar.title("GPT Report Dashboard")
@@ -254,20 +200,6 @@ def main():
     sample_metric = 85.5
     st.info(f"Current Accuracy: {sample_metric}%")
 
-    show_dataframe(tru_lens_dashboard)
-
-    if option_show_summary:
-        show_summary_statistics(tru_lens_dashboard)
-
-    show_llms_scores_by_agent(tru_lens_dashboard)
-    show_feature2_distribution(tru_lens_dashboard)
-    show_llms_scores_over_time(tru_lens_dashboard)
-    show_llms_scores_vs_feature1(tru_lens_dashboard)
-    show_feature3_distribution(tru_lens_dashboard)
-    show_cost_by_feature(tru_lens_dashboard)
-    show_feature12_vs_feature13_scatter(tru_lens_dashboard)
-
-    # New charts for each feature over time
     show_relevance_over_time(tru_lens_dashboard)
     show_groundedness_over_time(tru_lens_dashboard)
     show_sentiment_over_time(tru_lens_dashboard)
@@ -278,7 +210,7 @@ def main():
     show_stereotypes_over_time(tru_lens_dashboard)
     show_summarization_over_time(tru_lens_dashboard)
 
-    # ... Add more chart functions
-
+if __name__ == "__main__":
+    main()
 if __name__ == "__main__":
     main()
