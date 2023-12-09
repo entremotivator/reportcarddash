@@ -319,22 +319,22 @@ def show_codegpt_page():
     st.title("CodeGPT Page")
 
     # Generate random data for CodeGPT metrics
+    num_samples = NUM_ROWS  # Assuming you want to use NUM_ROWS
     data = {
-    'Time': np.arange(num_samples),
-    'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
-    'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
-    'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
-    'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
-    'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
-    'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
-    'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
-    'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
-    'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
-    'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
-}
-return pd.DataFrame(data)
+        'Time': np.arange(num_samples),
+        'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
+        'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
+        'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
+        'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
+        'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
+        'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
+        'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
+    }
 
-    # Rest of your code...
+    codegpt_metrics_data = pd.DataFrame(data)
 
     # Create a combined chart for all metrics
     all_metrics_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
@@ -401,8 +401,6 @@ return pd.DataFrame(data)
         height=400
     )
     st.altair_chart(compatibility_chart)
-data = {
-    
     # Rest of your code...
     
 def show_audiotts_page():
