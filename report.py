@@ -316,8 +316,92 @@ def generate_videogpt_metrics_data(num_frames=100):
 
 def show_codegpt_page():
     st.title("CodeGPT Page")
-    # Add content for CodeGPT page
-    # ...
+
+    # Generate random data for CodeGPT metrics
+    codegpt_metrics_data = generate_codegpt_metrics_data()
+
+    # Create a combined chart for all metrics
+    all_metrics_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y=alt.Y(alt.repeat("list"), type='quantitative'),
+        tooltip=['Time'] + [alt.Tooltip(field, type='quantitative') for field in codegpt_metrics_data.columns if field != 'Time']
+    ).properties(
+        width=800,
+        height=400
+    ).repeat(
+        list(codegpt_metrics_data.columns[1:]),
+        columns=2  # You can adjust the number of columns as needed
+    )
+
+    st.altair_chart(all_metrics_chart)
+
+    # Additional charts
+    st.subheader("Additional Charts")
+
+    # Chart for Code Accuracy and Code Completeness
+    st.subheader("Code Accuracy and Code Completeness Over Time")
+    combined_accuracy_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y=alt.Y(['Code Accuracy', 'Code Completeness'], type='quantitative'),
+        tooltip=['Time', 'Code Accuracy', 'Code Completeness']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(combined_accuracy_completeness_chart)
+
+    # Chart for Code Readability
+    st.subheader("Code Readability Over Time")
+    readability_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Code Readability',
+        tooltip=['Time', 'Code Readability']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(readability_chart)
+
+    # Chart for Error Handling and Function/Method Modularity
+    st.subheader("Error Handling and Function/Method Modularity Over Time")
+    combined_error_modularity_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y=alt.Y(['Error Handling', 'Function/Method Modularity'], type='quantitative'),
+        tooltip=['Time', 'Error Handling', 'Function/Method Modularity']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(combined_error_modularity_chart)
+
+    # Chart for Cross-Language Compatibility
+    st.subheader("Cross-Language Compatibility Over Time")
+    compatibility_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
+        x='Time',
+        y='Cross-Language Compatibility',
+        tooltip=['Time', 'Cross-Language Compatibility']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(compatibility_chart)
+
+def generate_codegpt_metrics_data(num_samples=100):
+    data = {
+        'Time': np.arange(num_samples),
+        'Code Accuracy': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Efficiency': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Completeness': np.random.uniform(0.7, 1.0, num_samples),
+        'Variable Naming Conventions': np.random.uniform(0.7, 1.0, num_samples),
+        'Code Readability': np.random.uniform(0.7, 1.0, num_samples),
+        'Error Handling': np.random.uniform(0.7, 1.0, num_samples),
+        'Function/Method Modularity': np.random.uniform(0.7, 1.0, num_samples),
+        'Consistency in Style': np.random.uniform(0.7, 1.0, num_samples),
+        'Use of Best Practices': np.random.uniform(0.7, 1.0, num_samples),
+        'Cross-Language Compatibility': np.random.uniform(0.7, 1.0, num_samples),
+    }
+    return pd.DataFrame(data)
+
 
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
