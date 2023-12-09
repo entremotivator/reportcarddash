@@ -313,10 +313,7 @@ def generate_videogpt_metrics_data(num_frames=100):
 def show_codegpt_page():
     st.title("CodeGPT Page")
 
-    # Generate random data for CodeGPT metrics
-    codegpt_metrics_data = generate_codegpt_metrics_data()
-
-   
+  
 code_completion_chart = code_completion_chart.interactive()
 st.altair_chart(code_completion_chart)
 
