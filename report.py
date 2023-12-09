@@ -106,7 +106,7 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page"])
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT"])
 
     if navigation_menu == "Dashboard":
         st.markdown("### TruLens Dashboard\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
