@@ -313,22 +313,22 @@ def generate_videogpt_metrics_data(num_frames=100):
 def show_codegpt_page():
     st.title("CodeGPT Page")
 
-  
-code_completion_chart = code_completion_chart.interactive()
-st.altair_chart(code_completion_chart)
+  code_completion_chart = code_completion_chart.interactive()
+    st.altair_chart(code_completion_chart)
+
 
     
 
 st.subheader("Response Time Distribution")
-response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
-    x=alt.X('Response Time', bin=alt.Bin(maxbins=20)),
-    y='count()',
-    tooltip=['count()']
-).properties(
-    width=800,
-    height=400
-)
-st.altair_chart(response_time_chart)
+    response_time_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
+        x=alt.X('Response Time', bin=alt.Bin(maxbins=20)),
+        y='count()',
+        tooltip=['count()']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(response_time_chart)
 
 st.subheader("New Metric 1 Distribution")
 new_metric1_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
@@ -385,7 +385,7 @@ st.altair_chart(new_metric2_over_time_chart)
     )
     st.altair_chart(metric6_distribution_chart)
 
-    st.subheader("Metric 7 Over Time")
+   st.subheader("Metric 7 Over Time")
     metric7_over_time_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
         x='Time',
         y='Metric 7',
@@ -538,6 +538,9 @@ def generate_codegpt_metrics_data(num_code_blocks=100):
         # Add more metrics as needed
     }
     return pd.DataFrame(data)
+    
+    date_range = st.slider("Select Date Range", 0, len(codegpt_metrics_data), (0, len(codegpt_metrics_data)))
+    filtered_data = codegpt_metrics_data.iloc[date_range[0]:date_range[1], :]
     
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
