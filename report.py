@@ -123,6 +123,17 @@ def main():
         # Add other dashboard functions here
     elif navigation_menu == "Analysis Page":
         show_analysis_page()
+    elif navigation_menu == "TextGPT":
+        show_textgpt_page()
+    elif navigation_menu == "AgentGPT":
+        show_agentgpt_page()
+    elif navigation_menu == "VideoGPT":
+        show_videogpt_page()
+    elif navigation_menu == "CodeGPT":
+        show_codegpt_page()
+    elif navigation_menu == "Audio/TTSGPT":
+        show_audiotts_page()
+        
 
 if __name__ == "__main__":
     main()
