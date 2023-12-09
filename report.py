@@ -44,10 +44,36 @@ def load_data(file):
 
 # Define your analysis functions here
 
-def show_analysis_page():
-    st.title("Analysis Page")
-    # Add your analysis options here
-    # ...
+def show_textgpt_page():
+    st.title("TextGPT Page")
+    
+    # Add content for TextGPT page
+    st.write("This is the TextGPT Page content.")
+
+    # Display tru lens metrics charts
+    st.subheader("tru Lens Metrics")
+    
+    # Generate random data for tru lens metrics
+    tru_lens_data = {
+        "Clarity": np.random.uniform(0, 10, 100),
+        "Novelty": np.random.uniform(0, 10, 100),
+        "Intent Understanding": np.random.uniform(0, 10, 100),
+        "Ambiguity Handling": np.random.uniform(0, 10, 100),
+        "User Engagement": np.random.uniform(0, 10, 100),
+        "Error Rate": np.random.uniform(0, 10, 100),
+        "Adaptability": np.random.uniform(0, 10, 100),
+        "Bias Detection": np.random.uniform(0, 10, 100),
+        "Ambient Context Awareness": np.random.uniform(0, 10, 100),
+        "Ethical Considerations": np.random.uniform(0, 10, 100),
+    }
+    
+    tru_lens_df = pd.DataFrame(tru_lens_data)
+
+    # Display charts for each metric
+    for metric in tru_lens_df.columns:
+        st.subheader(metric)
+        st.line_chart(tru_lens_df[metric])
+
 
 def show_textgpt_page():
     st.title("TextGPT Page")
