@@ -334,7 +334,6 @@ def show_codegpt_page():
 }
 return pd.DataFrame(data)
 
-if __name__ == "__main__":
     # Rest of your code...
 
     # Create a combined chart for all metrics
