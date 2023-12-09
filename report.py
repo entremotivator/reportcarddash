@@ -320,9 +320,146 @@ def show_codegpt_page():
     # ...
 
 def show_audiotts_page():
-    st.title("Audio/TTSGPT Page")
-    # Add content for Audio/TTSGPT page
-    # ...
+    st.title("AudioTTS/GPT Page")
+
+    # Generate random data for AudioTTS/GPT metrics
+    audiotts_metrics_data = generate_audiotts_metrics_data()
+
+    # Chart for Naturalness
+    st.subheader("Naturalness")
+    naturalness_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Naturalness',
+        tooltip=['Time', 'Naturalness']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(naturalness_chart)
+
+    # Chart for Intelligibility
+    st.subheader("Intelligibility")
+    intelligibility_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Intelligibility',
+        tooltip=['Time', 'Intelligibility']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(intelligibility_chart)
+
+    # Chart for Prosody
+    st.subheader("Prosody")
+    prosody_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Prosody',
+        tooltip=['Time', 'Prosody']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(prosody_chart)
+
+    # Chart for Pitch Accuracy
+    st.subheader("Pitch Accuracy")
+    pitch_accuracy_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Pitch Accuracy',
+        tooltip=['Time', 'Pitch Accuracy']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(pitch_accuracy_chart)
+
+    # Chart for Emotional Expression
+    st.subheader("Emotional Expression")
+    emotional_expression_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Emotional Expression',
+        tooltip=['Time', 'Emotional Expression']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(emotional_expression_chart)
+
+    # Chart for Speaker Similarity
+    st.subheader("Speaker Similarity")
+    speaker_similarity_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Speaker Similarity',
+        tooltip=['Time', 'Speaker Similarity']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(speaker_similarity_chart)
+
+    # Chart for Articulation
+    st.subheader("Articulation")
+    articulation_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Articulation',
+        tooltip=['Time', 'Articulation']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(articulation_chart)
+
+    # Chart for Duration Control
+    st.subheader("Duration Control")
+    duration_control_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Duration Control',
+        tooltip=['Time', 'Duration Control']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(duration_control_chart)
+
+    # Chart for Robustness to Noise
+    st.subheader("Robustness to Noise")
+    robustness_to_noise_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Robustness to Noise',
+        tooltip=['Time', 'Robustness to Noise']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(robustness_to_noise_chart)
+
+    # Chart for Latency
+    st.subheader("Latency")
+    latency_chart = alt.Chart(audiotts_metrics_data).mark_line().encode(
+        x='Time',
+        y='Latency',
+        tooltip=['Time', 'Latency']
+    ).properties(
+        width=800,
+        height=400
+    )
+    st.altair_chart(latency_chart)
+
+def generate_audiotts_metrics_data(num_samples=100):
+    data = {
+        'Time': np.arange(num_samples),
+        'Naturalness': np.random.uniform(0.7, 1.0, num_samples),
+        'Intelligibility': np.random.uniform(0.7, 1.0, num_samples),
+        'Prosody': np.random.uniform(0.7, 1.0, num_samples),
+        'Pitch Accuracy': np.random.uniform(0.7, 1.0, num_samples),
+        'Emotional Expression': np.random.uniform(0.7, 1.0, num_samples),
+        'Speaker Similarity': np.random.uniform(0.7, 1.0, num_samples),
+        'Articulation': np.random.uniform(0.7, 1.0, num_samples),
+        'Duration Control': np.random.uniform(0.7, 1.0, num_samples),
+        'Robustness to Noise': np.random.uniform(0.7, 1.0, num_samples),
+        'Latency': np.random.uniform(0.1, 0.5, num_samples),
+    }
+    return pd.DataFrame(data)
 
 def show_relevance_over_time(data):
     st.header("Relevance over Time")
