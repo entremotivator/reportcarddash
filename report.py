@@ -329,16 +329,6 @@ def show_codegpt_page():
     st.altair_chart(code_accuracy_chart)
     
 
-    st.subheader("Code Completeness Over Time")
-    code_completeness_chart = alt.Chart(codegpt_metrics_data).mark_line().encode(
-        x='Time',
-        y='Code Completeness',
-        tooltip=['Time', 'Code Completeness']
-    ).properties(
-        width=800,
-        height=400
-    )
-    st.altair_chart(code_completeness_chart)
 
     st.subheader("Variable Naming Conventions Distribution")
     variable_naming_chart = alt.Chart(codegpt_metrics_data).mark_bar().encode(
