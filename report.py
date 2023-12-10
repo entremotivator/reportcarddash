@@ -2,6 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
+from google.colab import auth as google_auth
+google_auth.authenticate_user()
+
+import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
 def show_chatbot_page():
