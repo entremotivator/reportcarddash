@@ -27,7 +27,6 @@ parameters = {
     "top_p": 0.8,
     "top_k": 40
 }
-model = TextGenerationModel.from_pretrained("text-bison")
 
 def chatbot_response(user_input):
     # Use the Vertex AI Text Generation model to generate a response
