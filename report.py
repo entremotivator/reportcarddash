@@ -3,49 +3,6 @@ import pandas as pd
 import numpy as np
 import altair as alt
 
-def predict_large_language_model_sample(api_key: str, model_name: str, temperature: float, max_decode_steps: int,
-                                       top_p: float, top_k: int, content: str, location: str = "us-central1",
-                                       tuned_model_name: str = ""):
-    """Predict using a Large Language Model."""
-    # You can use the user-provided settings here
-
-def show_chatbot_page():
-    st.title("Chatbot Page")
-
-    # Input form for user parameters
-    st.session_state.api_key = st.text_input("Enter your Vertex AI API key:", st.session_state.api_key)
-    st.session_state.model_name = st.text_input("Enter the model name:", "text-bison@001")
-    st.session_state.temperature = st.slider("Temperature", 0.1, 1.0, 0.2, step=0.1, key="temperature")
-    st.session_state.max_decode_steps = st.number_input("Max Decode Steps", min_value=1, value=256, key="max_decode_steps")
-    st.session_state.top_p = st.slider("Top P", 0.1, 1.0, 0.8, step=0.1, key="top_p")
-    st.session_state.top_k = st.number_input("Top K", min_value=1, value=40, key="top_k")
-    st.session_state.content = st.text_area("Input Content", '''Give me ten interview questions for the role of program manager''')
-
-    if st.button("Generate Response"):
-        if st.session_state.api_key:
-            response = predict_large_language_model_sample(
-                st.session_state.api_key,
-                st.session_state.model_name,
-                st.session_state.temperature,
-                st.session_state.max_decode_steps,
-                st.session_state.top_p,
-                st.session_state.top_k,
-                st.session_state.content,
-                "us-central1"
-            )
-            st.write(f"Response from Model: {response}")
-        else:
-            st.warning("Please enter your Vertex AI API key.")
-
-def main():
-    st.title("Large Language Model Prediction")
-
-    # Call the chatbot page
-    show_chatbot_page()
-
-if __name__ == "__main__":
-    main()
-
 NUM_AGENTS = 10
 NUM_ROWS = 100
 
@@ -532,8 +489,7 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT", "Chatbot"])
-
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT"])
 
     if navigation_menu == "Dashboard":
         st.markdown("### GPT Report Card Metrics\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
@@ -548,9 +504,6 @@ def main():
 
         show_relevance_over_time(tru_lens_dashboard)
         # Add other dashboard functions here
-   
-    elif navigation_menu == "Chatbot":
-        show_chatbot_page()
     elif navigation_menu == "Analysis Page":
         show_analysis_page()
     elif navigation_menu == "TextGPT":
@@ -565,8 +518,8 @@ def main():
         show_audiotts_page()
     elif navigation_menu == "ImageGPT":
         show_imagegpt_page()
-                     
         
 
 if __name__ == "__main__":
     main()
+
