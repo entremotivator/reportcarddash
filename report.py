@@ -5,28 +5,34 @@ import altair as alt
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
+def predict_large_language_model_sample(api_key: str, model_name: str, temperature: float, max_decode_steps: int,
+                                       top_p: float, top_k: int, content: str, location: str = "us-central1",
+                                       tuned_model_name: str = ""):
+    """Predict using a Large Language Model."""
+    # You can use the user-provided settings here
+
 def show_chatbot_page():
     st.title("Chatbot Page")
 
     # Input form for user parameters
-    api_key = st.text_input("Enter your Vertex AI API key:")
-    model_name = st.text_input("Enter the model name:", "text-bison@001")
-    temperature = st.slider("Temperature", 0.1, 1.0, 0.2, step=0.1)
-    max_decode_steps = st.number_input("Max Decode Steps", min_value=1, value=256)
-    top_p = st.slider("Top P", 0.1, 1.0, 0.8, step=0.1)
-    top_k = st.number_input("Top K", min_value=1, value=40)
-    content = st.text_area("Input Content", '''Give me ten interview questions for the role of program manager''')
+    st.session_state.api_key = st.text_input("Enter your Vertex AI API key:", st.session_state.api_key)
+    st.session_state.model_name = st.text_input("Enter the model name:", "text-bison@001")
+    st.session_state.temperature = st.slider("Temperature", 0.1, 1.0, 0.2, step=0.1, key="temperature")
+    st.session_state.max_decode_steps = st.number_input("Max Decode Steps", min_value=1, value=256, key="max_decode_steps")
+    st.session_state.top_p = st.slider("Top P", 0.1, 1.0, 0.8, step=0.1, key="top_p")
+    st.session_state.top_k = st.number_input("Top K", min_value=1, value=40, key="top_k")
+    st.session_state.content = st.text_area("Input Content", '''Give me ten interview questions for the role of program manager''')
 
     if st.button("Generate Response"):
-        if api_key:
+        if st.session_state.api_key:
             response = predict_large_language_model_sample(
-                api_key,
-                model_name,
-                temperature,
-                max_decode_steps,
-                top_p,
-                top_k,
-                content,
+                st.session_state.api_key,
+                st.session_state.model_name,
+                st.session_state.temperature,
+                st.session_state.max_decode_steps,
+                st.session_state.top_p,
+                st.session_state.top_k,
+                st.session_state.content,
                 "us-central1"
             )
             st.write(f"Response from Model: {response}")
@@ -34,34 +40,13 @@ def show_chatbot_page():
             st.warning("Please enter your Vertex AI API key.")
 
 def main():
-  
     st.title("Large Language Model Prediction")
 
-    # Input form for user parameters
-    api_key = st.text_input("Enter your Vertex AI API key:")
-    model_name = st.text_input("Enter the model name:", "text-bison@001")
-    temperature = st.slider("Temperature", 0.1, 1.0, 0.2, step=0.1)
-    max_decode_steps = st.number_input("Max Decode Steps", min_value=1, value=256)
-    top_p = st.slider("Top P", 0.1, 1.0, 0.8, step=0.1)
-    top_k = st.number_input("Top K", min_value=1, value=40)
-    content = st.text_area("Input Content", '''Give me ten interview questions for the role of program manager''')
+    # Call the chatbot page
+    show_chatbot_page()
 
-    if st.button("Generate Response"):
-        if api_key:
-            response = predict_large_language_model_sample(
-                api_key,
-                model_name,
-                temperature,
-                max_decode_steps,
-                top_p,
-                top_k,
-                content,
-                "us-central1"
-            )
-            st.write(f"Response from Model: {response}")
-        else:
-            st.warning("Please enter your Vertex AI API key.")
-# ... (Existing code)
+if __name__ == "__main__":
+    main()
 
 NUM_AGENTS = 10
 NUM_ROWS = 100
