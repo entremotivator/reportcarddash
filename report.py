@@ -2,6 +2,46 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
+from vertexai.preview.language_models import TextGenerationModel
+
+def interview(temperature: float = 0.2) -> None:
+    """Ideation example with a Large Language Model"""
+
+    # TODO developer - override these parameters as needed:
+    parameters = {
+        "temperature": temperature,
+        "max_output_tokens": 256,
+        "top_p": 0.8,
+        "top_k": 40,
+    }
+
+    model = TextGenerationModel.from_pretrained("text-bison@001")
+    response = model.predict(
+        'Give me ten interview questions for the role of program manager.',
+        **parameters,
+    )
+    return response.text
+
+def show_chatbot_page():
+    st.title("Chatbot Page")
+
+    st.write(
+        "Welcome to the Chatbot Page! Ask the chatbot any question, and it will provide a response."
+    )
+
+    # Add user input for the chatbot
+    user_input = st.text_input("Ask a question:")
+    temperature = st.slider("Temperature", 0.1, 1.0, 0.2, step=0.1)
+
+    if st.button("Generate Response"):
+        if user_input:
+            response = interview(temperature=temperature)
+            st.write(f"User: {user_input}")
+            st.write(f"Chatbot: {response}")
+        else:
+            st.warning("Please enter a question before generating a response.")
+
+# ... (Existing code)
 
 NUM_AGENTS = 10
 NUM_ROWS = 100
@@ -489,7 +529,7 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT"])
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT, "Chatbot"])
 
     if navigation_menu == "Dashboard":
         st.markdown("### GPT Report Card Metrics\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
@@ -504,6 +544,8 @@ def main():
 
         show_relevance_over_time(tru_lens_dashboard)
         # Add other dashboard functions here
+    if navigation_menu == "Chatbot":
+        show_chatbot_page()                 
     elif navigation_menu == "Analysis Page":
         show_analysis_page()
     elif navigation_menu == "TextGPT":
@@ -518,6 +560,7 @@ def main():
         show_audiotts_page()
     elif navigation_menu == "ImageGPT":
         show_imagegpt_page()
+                     
         
 
 if __name__ == "__main__":
