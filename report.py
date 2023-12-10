@@ -1,4 +1,5 @@
-
+import vertexai
+from vertexai.language_models import TextGenerationModel
 import streamlit as st
 import pandas as pd
 import numpy as np
