@@ -1,4 +1,10 @@
 import os
+import json
+#import utils
+import openai
+import subprocess
+import webbrowser
+import time
 import vertexai
 from vertexai.language_models import TextGenerationModel
 import streamlit as st
