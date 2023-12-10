@@ -5,8 +5,6 @@ import openai
 import subprocess
 import webbrowser
 import time
-import vertexai
-from vertexai.language_models import TextGenerationModel
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -21,6 +19,8 @@ load_dotenv()
 
 vertexai.init(project="agisuper-402004", location="us-central1")
 
+import vertexai
+from vertexai.language_models import TextGenerationModel
 parameters = {
     "candidate_count": 1,
     "max_output_tokens": 1024,
