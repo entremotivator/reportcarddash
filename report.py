@@ -18,7 +18,7 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-credentials"
 load_dotenv()
 
 
-vertexai.init(project="agisuper-402004", location="us-central1")
+
 
 parameters = {
     "candidate_count": 1,
