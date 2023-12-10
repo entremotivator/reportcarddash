@@ -94,7 +94,7 @@ def show_textgpt_page():
     st.write("This is the TextGPT Page content.")
 
     # Display tru lens metrics charts
-    st.subheader("tru Lens Metrics")
+    st.subheader("GPT Report Card Metrics")
     
     # Generate random data for tru lens metrics
     tru_lens_data = {
