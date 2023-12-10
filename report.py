@@ -12,7 +12,7 @@ import altair as alt
 from io import StringIO
 from datetime import datetime
 from dotenv import load_dotenv
-from google.cloud import storage
+
 
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-credentials"
 load_dotenv()
