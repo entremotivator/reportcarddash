@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-
-
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
