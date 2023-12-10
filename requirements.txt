@@ -5,3 +5,4 @@ trulens_eval
 plotly
 altair
 google-cloud-aiplatform==1.25.0
+vertexai
