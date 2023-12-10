@@ -564,8 +564,7 @@ def main():
 
         show_relevance_over_time(tru_lens_dashboard)
         # Add other dashboard functions here
-   if navigation_menu == "Dashboard":
-        # ... (existing code)
+   
     elif navigation_menu == "Chatbot":
         show_chatbot_page()
     elif navigation_menu == "Analysis Page":
