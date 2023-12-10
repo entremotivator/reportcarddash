@@ -472,7 +472,7 @@ def show_relevance_over_time(data):
 # Add other analysis functions here
 
 def main():
-    st.sidebar.title("GPT Report Dashboard")
+    st.sidebar.title("GPT Report Card Dashboard")
 
     # Add a file uploader to the sidebar
     uploaded_file = st.sidebar.file_uploader("Option 1: Upload a CSV file", type=["csv"])
