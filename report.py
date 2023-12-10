@@ -1,8 +1,30 @@
+from transformers import TextGenerationModel
+import vertexai
 import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
 
+vertexai.init(project="projectreport-407519", location="us-central1")
+
+parameters = {
+    "candidate_count": 1,
+    "max_output_tokens": 1024,
+    "temperature": 0.2,
+    "top_p": 0.8,
+    "top_k": 40
+}
+model = TextGenerationModel.from_pretrained("text-bison")
+
+def chatbot_response(user_input):
+    # Use the Vertex AI Text Generation model to generate a response
+    response = model.predict(user_input, **parameters)
+    
+    # Extract the generated text from the response
+    generated_text = response.text
+    
+    return f"Model Response: {generated_text}"
+    
 NUM_AGENTS = 10
 NUM_ROWS = 100
 
@@ -339,16 +361,10 @@ def show_chatbot_page(api_keys):
     # Chat input box
     user_input = st.text_input("Ask me something:")
     
-    # Placeholder function for chatbot responses
-    def chatbot_response(user_input):
-        # Replace this function with your actual chatbot API integration
-        # For now, it echoes the user's input
-        return f"You asked: {user_input}"
-
     if st.button("Get Response"):
         if user_input:
             response = chatbot_response(user_input)
-            st.write(f"Chatbot Response: {response}")
+            st.write(response)
         else:
             st.warning("Please enter a question.")
 
