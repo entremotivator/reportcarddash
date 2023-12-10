@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-from vertexai.language_models import TextGenerationModel
 
 vertexai.init(project="projectreport-407519", location="us-central1")
 
