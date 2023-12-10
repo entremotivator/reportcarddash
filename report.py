@@ -18,9 +18,6 @@ os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-credentials"
 load_dotenv()
 
 
-
-from vertexai.language_models import TextGenerationModel
-
 vertexai.init(project="agisuper-402004", location="us-central1")
 
 parameters = {
