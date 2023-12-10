@@ -4,3 +4,4 @@ numpy==1.23.5
 trulens_eval
 plotly
 altair
+google-cloud-aiplatform==1.25.0
