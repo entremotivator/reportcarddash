@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import altair as alt
-from vertexai.preview.language_models import TextGenerationModel
 
 def predict_large_language_model_sample(api_key: str, model_name: str, temperature: float, max_decode_steps: int,
                                        top_p: float, top_k: int, content: str, location: str = "us-central1",
