@@ -44,6 +44,25 @@ def load_data(file):
 
 # Define your analysis functions here
 
+def show_chatbot_page():
+    st.title("Chatbot Page")
+
+    # Chat input box
+    user_input = st.text_input("Ask me something:")
+    
+    # Placeholder function for chatbot responses
+    def chatbot_response(user_input):
+        # Replace this function with your actual chatbot API integration
+        # For now, it echoes the user's input
+        return f"You asked: {user_input}"
+
+    if st.button("Get Response"):
+        if user_input:
+            response = chatbot_response(user_input)
+            st.write(f"Chatbot Response: {response}")
+        else:
+            st.warning("Please enter a question.")
+
 def show_analysis_page():
     st.title("Analysis Page")
     
