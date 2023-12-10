@@ -5,7 +5,10 @@ import pandas as pd
 import numpy as np
 import altair as alt
 
-vertexai.init(project="projectreport-407519", location="us-central1")
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-credentials"
+load_dotenv()
+
+vertexai.init(project="agisuper-402004", location="us-central1")
 
 parameters = {
     "candidate_count": 1,
