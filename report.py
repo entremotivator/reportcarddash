@@ -549,7 +549,7 @@ def main():
 
     st.title("🚀 GPT Report Card 📊")
 
-    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT"])
+    navigation_menu = st.sidebar.radio("Navigation", ["Dashboard", "Analysis Page", "Chatbot", "TextGPT", "AgentGPT", "VideoGPT", "CodeGPT", "Audio/TTSGPT", "ImageGPT"])
 
     if navigation_menu == "Dashboard":
         st.markdown("### GPT Report Card Metrics\n\n🔍 Track Language Models (LLM) and agents with detailed metrics and self-improvement skills.\n\n"
@@ -566,6 +566,8 @@ def main():
         # Add other dashboard functions here
     elif navigation_menu == "Analysis Page":
         show_analysis_page()
+    elif navigation_menu == "Chatbot":
+        show_chatbot_page(api_keys)
     elif navigation_menu == "TextGPT":
         show_textgpt_page()
     elif navigation_menu == "AgentGPT":
