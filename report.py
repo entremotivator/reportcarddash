@@ -333,6 +333,25 @@ def show_codegpt_page():
     st.title("CodeGPT Page")
     st.altair_chart(code_completion_chart)
 
+def show_chatbot_page(api_keys):
+    st.title("Chatbot Page")
+
+    # Chat input box
+    user_input = st.text_input("Ask me something:")
+    
+    # Placeholder function for chatbot responses
+    def chatbot_response(user_input):
+        # Replace this function with your actual chatbot API integration
+        # For now, it echoes the user's input
+        return f"You asked: {user_input}"
+
+    if st.button("Get Response"):
+        if user_input:
+            response = chatbot_response(user_input)
+            st.write(f"Chatbot Response: {response}")
+        else:
+            st.warning("Please enter a question.")
+
 
 def show_audiotts_page():
     st.title("AudioTTS/GPT Page")
@@ -504,7 +523,29 @@ def main():
     option_show_summary = st.sidebar.checkbox("Option 2: Show Summary Statistics", value=True)
 
     st.sidebar.header("Option 3: API Keys")
+
+    # Named API keys
+    textgpt_api_key = st.sidebar.text_input("TextGPT API Key:")
+    agentgpt_api_key = st.sidebar.text_input("AgentGPT API Key:")
+    google_api_key = st.sidebar.text_input("Google API Key:")
+    hugging_face_api_key = st.sidebar.text_input("Hugging Face API Key:")
+    langsmith_api_key = st.sidebar.text_input("LangSmith API Key:")
+    stable_diffusion_api_key = st.sidebar.text_input("Stable Diffusion API Key:")
+
+    # Add more API keys as needed
+
+    api_keys = {
+        "textgpt": textgpt_api_key,
+        "agentgpt": agentgpt_api_key,
+        "google": google_api_key,
+        "hugging_face": hugging_face_api_key,
+        "langsmith": langsmith_api_key,
+        "stable_diffusion": stable_diffusion_api_key,
+        # Add more keys with corresponding names
+    }
+
     # ... (unchanged code)
+
 
     st.title("🚀 GPT Report Card 📊")
 
