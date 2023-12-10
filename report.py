@@ -17,10 +17,12 @@ from dotenv import load_dotenv
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google-credentials"
 load_dotenv()
 
-vertexai.init(project="agisuper-402004", location="us-central1")
 
 import vertexai
 from vertexai.language_models import TextGenerationModel
+
+vertexai.init(project="agisuper-402004", location="us-central1")
+
 parameters = {
     "candidate_count": 1,
     "max_output_tokens": 1024,
